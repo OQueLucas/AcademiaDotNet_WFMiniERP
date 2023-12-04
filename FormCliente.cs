@@ -19,6 +19,37 @@ namespace AcademiaDotNet_WFMiniERP
         {
             Cadastrar();
         }
+        private void button_LimparCampos_Click(object sender, EventArgs e)
+        {
+            LimparCampos();
+        }
+
+        private void dataGridView_Clientes_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            bool excluirClick = e.ColumnIndex == dataGridView_Clientes.Rows[e.RowIndex].Cells["Column_Excluir"].ColumnIndex;
+
+            if (!excluirClick) return;
+
+            int id = int.Parse(dataGridView_Clientes.Rows[e.RowIndex].Cells["Column_ID"].Value.ToString());
+            Excluir(id);
+        }
+
+        private void maskedTextBox_CPF_Enter(object sender, EventArgs e)
+        {
+            if (sender is MaskedTextBox textBox)
+            {
+                MaskFormat oldFormat = textBox.TextMaskFormat;
+                textBox.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
+                string fullText = textBox.Text;
+                textBox.TextMaskFormat = oldFormat;
+
+                int index = fullText.IndexOf(textBox.PromptChar);
+                if (index > -1)
+                {
+                    BeginInvoke(new Action(() => textBox.Select(index, 0)));
+                }
+            }
+        }
 
         private async Task Cadastrar()
         {
@@ -61,38 +92,6 @@ namespace AcademiaDotNet_WFMiniERP
                 return true;
             }
             return false;
-        }
-
-        private void dataGridView_Clientes_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            bool excluirClick = e.ColumnIndex == dataGridView_Clientes.Rows[e.RowIndex].Cells["Column_Excluir"].ColumnIndex;
-
-            if (!excluirClick) return;
-
-            int id = int.Parse(dataGridView_Clientes.Rows[e.RowIndex].Cells["Column_ID"].Value.ToString());
-            Excluir(id);
-        }
-
-        private void maskedTextBox_CPF_Enter(object sender, EventArgs e)
-        {
-            if (sender is MaskedTextBox textBox)
-            {
-                MaskFormat oldFormat = textBox.TextMaskFormat;
-                textBox.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
-                string fullText = textBox.Text;
-                textBox.TextMaskFormat = oldFormat;
-
-                int index = fullText.IndexOf(textBox.PromptChar);
-                if (index > -1)
-                {
-                    BeginInvoke(new Action(() => textBox.Select(index, 0)));
-                }
-            }
-        }
-
-        private void button_LimparCampos_Click(object sender, EventArgs e)
-        {
-            LimparCampos();
         }
 
         private void LimparCampos()

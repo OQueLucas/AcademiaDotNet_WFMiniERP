@@ -1,10 +1,6 @@
 ﻿using AcademiaDotNet_WFMiniERP.Data;
 using AcademiaDotNet_WFMiniERP.DataModels;
 using Microsoft.EntityFrameworkCore;
-using System.Data;
-using System.Globalization;
-using System.Reflection;
-using System.Windows.Forms;
 
 namespace AcademiaDotNet_WFMiniERP.Services
 {
