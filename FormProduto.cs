@@ -7,5 +7,10 @@
             InitializeComponent();
             CenterToParent();
         }
+
+        private void button_LimparCampos_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

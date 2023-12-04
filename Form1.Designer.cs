@@ -40,13 +40,13 @@
             label_Cliente = new Label();
             numericUpDown_Quantidade = new NumericUpDown();
             label_Produto = new Label();
-            button_Adicionar = new Button();
             dataGridView_Itens = new DataGridView();
             Column_ID = new DataGridViewTextBoxColumn();
             Column_Nome = new DataGridViewTextBoxColumn();
             Column_Preco = new DataGridViewTextBoxColumn();
             Column_Quantidade = new DataGridViewTextBoxColumn();
             Column_ValorTotal = new DataGridViewTextBoxColumn();
+            button_Adicionar = new Button();
             groupBox_Cadastro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDown_Quantidade).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView_Itens).BeginInit();
@@ -54,21 +54,27 @@
             // 
             // button_Notas
             // 
-            button_Notas.Location = new Point(1137, 616);
+            button_Notas.Image = Properties.Resources.invoice_black;
+            button_Notas.Location = new Point(1128, 617);
             button_Notas.Name = "button_Notas";
-            button_Notas.Size = new Size(95, 95);
+            button_Notas.Size = new Size(81, 83);
             button_Notas.TabIndex = 35;
-            button_Notas.Text = "Notas";
+            button_Notas.Text = "Visualizar Notas";
+            button_Notas.TextAlign = ContentAlignment.BottomCenter;
+            button_Notas.TextImageRelation = TextImageRelation.ImageAboveText;
             button_Notas.UseVisualStyleBackColor = true;
             button_Notas.Click += button_Notas_Click;
             // 
             // button_EmitirNota
             // 
-            button_EmitirNota.Location = new Point(993, 726);
+            button_EmitirNota.Image = Properties.Resources.billing_machine_black;
+            button_EmitirNota.Location = new Point(915, 709);
             button_EmitirNota.Name = "button_EmitirNota";
-            button_EmitirNota.Size = new Size(75, 23);
+            button_EmitirNota.Size = new Size(121, 40);
             button_EmitirNota.TabIndex = 33;
             button_EmitirNota.Text = "Emitir Nota";
+            button_EmitirNota.TextAlign = ContentAlignment.MiddleRight;
+            button_EmitirNota.TextImageRelation = TextImageRelation.ImageBeforeText;
             button_EmitirNota.UseVisualStyleBackColor = true;
             // 
             // comboBox_Produtos
@@ -76,64 +82,79 @@
             comboBox_Produtos.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             comboBox_Produtos.AutoCompleteSource = AutoCompleteSource.ListItems;
             comboBox_Produtos.FormattingEnabled = true;
-            comboBox_Produtos.Location = new Point(397, 13);
+            comboBox_Produtos.Location = new Point(333, 24);
             comboBox_Produtos.Name = "comboBox_Produtos";
             comboBox_Produtos.Size = new Size(299, 23);
             comboBox_Produtos.TabIndex = 32;
             // 
             // button_AtualizarClientes
             // 
-            button_AtualizarClientes.Location = new Point(947, 10);
+            button_AtualizarClientes.Image = Properties.Resources.sync_black;
+            button_AtualizarClientes.Location = new Point(894, 14);
             button_AtualizarClientes.Name = "button_AtualizarClientes";
-            button_AtualizarClientes.Size = new Size(121, 23);
+            button_AtualizarClientes.Size = new Size(142, 40);
             button_AtualizarClientes.TabIndex = 31;
             button_AtualizarClientes.Text = "Atualizar Listas";
+            button_AtualizarClientes.TextAlign = ContentAlignment.MiddleRight;
+            button_AtualizarClientes.TextImageRelation = TextImageRelation.ImageBeforeText;
             button_AtualizarClientes.UseVisualStyleBackColor = true;
             // 
             // groupBox_Cadastro
             // 
             groupBox_Cadastro.Controls.Add(button_Clientes);
-            groupBox_Cadastro.Controls.Add(button_Produtos);
             groupBox_Cadastro.Controls.Add(button_Fornecedores);
-            groupBox_Cadastro.Location = new Point(1112, 12);
+            groupBox_Cadastro.Controls.Add(button_Produtos);
+            groupBox_Cadastro.Location = new Point(1082, 12);
             groupBox_Cadastro.Name = "groupBox_Cadastro";
-            groupBox_Cadastro.Size = new Size(140, 160);
+            groupBox_Cadastro.Size = new Size(170, 219);
             groupBox_Cadastro.TabIndex = 30;
             groupBox_Cadastro.TabStop = false;
             groupBox_Cadastro.Text = "Cadastros";
             // 
             // button_Clientes
             // 
-            button_Clientes.Anchor = AnchorStyles.Top;
+            button_Clientes.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            button_Clientes.BackgroundImageLayout = ImageLayout.None;
+            button_Clientes.ForeColor = SystemColors.ControlText;
+            button_Clientes.Image = Properties.Resources.user_male_black;
             button_Clientes.Location = new Point(25, 29);
             button_Clientes.Margin = new Padding(10);
             button_Clientes.Name = "button_Clientes";
-            button_Clientes.Size = new Size(95, 25);
+            button_Clientes.Size = new Size(125, 45);
             button_Clientes.TabIndex = 12;
             button_Clientes.Text = "Clientes";
+            button_Clientes.TextAlign = ContentAlignment.MiddleRight;
+            button_Clientes.TextImageRelation = TextImageRelation.ImageBeforeText;
             button_Clientes.UseVisualStyleBackColor = true;
             button_Clientes.Click += button_Clientes_Click;
             // 
             // button_Produtos
             // 
-            button_Produtos.Anchor = AnchorStyles.Bottom;
-            button_Produtos.Location = new Point(25, 122);
+            button_Produtos.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            button_Produtos.Image = Properties.Resources.product_black;
+            button_Produtos.Location = new Point(25, 161);
             button_Produtos.Margin = new Padding(10);
             button_Produtos.Name = "button_Produtos";
-            button_Produtos.Size = new Size(95, 25);
+            button_Produtos.Size = new Size(125, 45);
             button_Produtos.TabIndex = 13;
             button_Produtos.Text = "Produtos";
+            button_Produtos.TextAlign = ContentAlignment.MiddleRight;
+            button_Produtos.TextImageRelation = TextImageRelation.ImageBeforeText;
             button_Produtos.UseVisualStyleBackColor = true;
             button_Produtos.Click += button_Produtos_Click;
             // 
             // button_Fornecedores
             // 
-            button_Fornecedores.Anchor = AnchorStyles.None;
-            button_Fornecedores.Location = new Point(25, 76);
+            button_Fornecedores.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            button_Fornecedores.Image = Properties.Resources.company_black;
+            button_Fornecedores.Location = new Point(25, 95);
+            button_Fornecedores.Margin = new Padding(10);
             button_Fornecedores.Name = "button_Fornecedores";
-            button_Fornecedores.Size = new Size(95, 25);
+            button_Fornecedores.Size = new Size(125, 45);
             button_Fornecedores.TabIndex = 14;
             button_Fornecedores.Text = "Fornecedores";
+            button_Fornecedores.TextAlign = ContentAlignment.MiddleRight;
+            button_Fornecedores.TextImageRelation = TextImageRelation.ImageBeforeText;
             button_Fornecedores.UseVisualStyleBackColor = true;
             button_Fornecedores.Click += button_Fornecedores_Click;
             // 
@@ -142,7 +163,7 @@
             comboBox_Clientes.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             comboBox_Clientes.AutoCompleteSource = AutoCompleteSource.ListItems;
             comboBox_Clientes.FormattingEnabled = true;
-            comboBox_Clientes.Location = new Point(64, 12);
+            comboBox_Clientes.Location = new Point(81, 24);
             comboBox_Clientes.Name = "comboBox_Clientes";
             comboBox_Clientes.Size = new Size(176, 23);
             comboBox_Clientes.TabIndex = 29;
@@ -150,7 +171,7 @@
             // label_Cliente
             // 
             label_Cliente.AutoSize = true;
-            label_Cliente.Location = new Point(11, 15);
+            label_Cliente.Location = new Point(28, 27);
             label_Cliente.Name = "label_Cliente";
             label_Cliente.Size = new Size(47, 15);
             label_Cliente.TabIndex = 28;
@@ -158,7 +179,7 @@
             // 
             // numericUpDown_Quantidade
             // 
-            numericUpDown_Quantidade.Location = new Point(702, 13);
+            numericUpDown_Quantidade.Location = new Point(638, 24);
             numericUpDown_Quantidade.Name = "numericUpDown_Quantidade";
             numericUpDown_Quantidade.Size = new Size(83, 23);
             numericUpDown_Quantidade.TabIndex = 34;
@@ -167,30 +188,21 @@
             // label_Produto
             // 
             label_Produto.AutoSize = true;
-            label_Produto.Location = new Point(336, 16);
+            label_Produto.Location = new Point(272, 27);
             label_Produto.Name = "label_Produto";
             label_Produto.Size = new Size(55, 15);
             label_Produto.TabIndex = 27;
             label_Produto.Text = "Produtos";
             // 
-            // button_Adicionar
-            // 
-            button_Adicionar.FlatStyle = FlatStyle.System;
-            button_Adicionar.Location = new Point(818, 10);
-            button_Adicionar.Name = "button_Adicionar";
-            button_Adicionar.Size = new Size(75, 23);
-            button_Adicionar.TabIndex = 26;
-            button_Adicionar.Text = "Adicionar";
-            button_Adicionar.UseVisualStyleBackColor = true;
-            // 
             // dataGridView_Itens
             // 
+            dataGridView_Itens.BackgroundColor = SystemColors.ControlLight;
             dataGridView_Itens.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView_Itens.Columns.AddRange(new DataGridViewColumn[] { Column_ID, Column_Nome, Column_Preco, Column_Quantidade, Column_ValorTotal });
-            dataGridView_Itens.Location = new Point(11, 41);
+            dataGridView_Itens.Location = new Point(11, 64);
             dataGridView_Itens.Name = "dataGridView_Itens";
             dataGridView_Itens.RowTemplate.Height = 25;
-            dataGridView_Itens.Size = new Size(1057, 679);
+            dataGridView_Itens.Size = new Size(1025, 636);
             dataGridView_Itens.TabIndex = 25;
             // 
             // Column_ID
@@ -219,10 +231,23 @@
             Column_ValorTotal.HeaderText = "Valor Total";
             Column_ValorTotal.Name = "Column_ValorTotal";
             // 
+            // button_Adicionar
+            // 
+            button_Adicionar.Image = Properties.Resources.add_shopping_cart_black;
+            button_Adicionar.Location = new Point(761, 14);
+            button_Adicionar.Name = "button_Adicionar";
+            button_Adicionar.Size = new Size(115, 40);
+            button_Adicionar.TabIndex = 36;
+            button_Adicionar.Text = "Adicionar";
+            button_Adicionar.TextAlign = ContentAlignment.MiddleRight;
+            button_Adicionar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button_Adicionar.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(1264, 761);
             Controls.Add(label_Cliente);
             Controls.Add(comboBox_Clientes);
@@ -258,12 +283,12 @@
         private Label label_Cliente;
         private NumericUpDown numericUpDown_Quantidade;
         private Label label_Produto;
-        private Button button_Adicionar;
         private DataGridView dataGridView_Itens;
         private DataGridViewTextBoxColumn Column_ID;
         private DataGridViewTextBoxColumn Column_Nome;
         private DataGridViewTextBoxColumn Column_Preco;
         private DataGridViewTextBoxColumn Column_Quantidade;
         private DataGridViewTextBoxColumn Column_ValorTotal;
+        private Button button_Adicionar;
     }
 }
