@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             groupBox_Cadastro = new GroupBox();
             label_CPF = new Label();
             maskedTextBox_CPF = new MaskedTextBox();
@@ -81,12 +79,14 @@
             // maskedTextBox_CPF
             // 
             maskedTextBox_CPF.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            maskedTextBox_CPF.CutCopyMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             maskedTextBox_CPF.Location = new Point(6, 45);
             maskedTextBox_CPF.Mask = "000,000,000-00";
             maskedTextBox_CPF.Name = "maskedTextBox_CPF";
             maskedTextBox_CPF.Size = new Size(233, 23);
             maskedTextBox_CPF.TabIndex = 12;
             maskedTextBox_CPF.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            maskedTextBox_CPF.Enter += maskedTextBox_CPF_Enter;
             // 
             // label_Nome
             // 
@@ -134,6 +134,7 @@
             button_LimparCampos.TextAlign = ContentAlignment.MiddleRight;
             button_LimparCampos.TextImageRelation = TextImageRelation.ImageBeforeText;
             button_LimparCampos.UseVisualStyleBackColor = true;
+            button_LimparCampos.Click += button_LimparCampos_Click;
             // 
             // button_Cadastrar
             // 
@@ -180,8 +181,6 @@
             // 
             Column_CPF.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             Column_CPF.DataPropertyName = "CPF";
-            dataGridViewCellStyle3.Format = "000,000,000-00";
-            Column_CPF.DefaultCellStyle = dataGridViewCellStyle3;
             Column_CPF.HeaderText = "CPF";
             Column_CPF.Name = "Column_CPF";
             Column_CPF.Width = 53;
@@ -204,10 +203,6 @@
             // 
             // Column_Excluir
             // 
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.Format = "000,000,000-00";
-            dataGridViewCellStyle4.NullValue = null;
-            Column_Excluir.DefaultCellStyle = dataGridViewCellStyle4;
             Column_Excluir.HeaderText = "Excluir";
             Column_Excluir.Name = "Column_Excluir";
             Column_Excluir.Text = "Excluir";
@@ -266,12 +261,12 @@
         private Button button_Cadastrar;
         private TextBox textBox_Consultar;
         private DataGridView dataGridView_Clientes;
+        private Button button_Consultar;
         private DataGridViewTextBoxColumn Column_ID;
         private DataGridViewTextBoxColumn Column_CPF;
         private DataGridViewTextBoxColumn Column_Nome;
         private DataGridViewTextBoxColumn Column_Email;
         private DataGridViewButtonColumn Column_Excluir;
         private DataGridViewTextBoxColumn Column_Notas;
-        private Button button_Consultar;
     }
 }
