@@ -43,16 +43,14 @@
             button_Cadastrar = new Button();
             button_Consultar = new Button();
             dataGridView_Produtos = new DataGridView();
-            produtoBindingSource = new BindingSource(components);
             Column_ID = new DataGridViewTextBoxColumn();
             Column_Nome = new DataGridViewTextBoxColumn();
             Column_Preco = new DataGridViewTextBoxColumn();
-            Column_RazaoSocial = new DataGridViewTextBoxColumn();
+            Column_FornecedorID = new DataGridViewTextBoxColumn();
             Column_Excluir = new DataGridViewButtonColumn();
             groupBox_Cadastro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDown_QuantidadeEstoque).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView_Produtos).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)produtoBindingSource).BeginInit();
             SuspendLayout();
             // 
             // textBox_Consultar
@@ -198,20 +196,14 @@
             // 
             // dataGridView_Produtos
             // 
-            dataGridView_Produtos.AutoGenerateColumns = false;
             dataGridView_Produtos.BackgroundColor = SystemColors.ControlLight;
             dataGridView_Produtos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView_Produtos.Columns.AddRange(new DataGridViewColumn[] { Column_ID, Column_Nome, Column_Preco, Column_RazaoSocial, Column_Excluir });
-            dataGridView_Produtos.DataSource = produtoBindingSource;
+            dataGridView_Produtos.Columns.AddRange(new DataGridViewColumn[] { Column_ID, Column_Nome, Column_Preco, Column_FornecedorID, Column_Excluir });
             dataGridView_Produtos.Location = new Point(12, 87);
             dataGridView_Produtos.Name = "dataGridView_Produtos";
             dataGridView_Produtos.RowTemplate.Height = 25;
             dataGridView_Produtos.Size = new Size(917, 666);
             dataGridView_Produtos.TabIndex = 20;
-            // 
-            // produtoBindingSource
-            // 
-            produtoBindingSource.DataSource = typeof(DataModels.Produto);
             // 
             // Column_ID
             // 
@@ -234,13 +226,11 @@
             Column_Preco.HeaderText = "Preço";
             Column_Preco.Name = "Column_Preco";
             // 
-            // Column_RazaoSocial
+            // Column_FornecedorID
             // 
-            Column_RazaoSocial.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            Column_RazaoSocial.DataPropertyName = "RazaoSocial";
-            Column_RazaoSocial.HeaderText = "Razão Social";
-            Column_RazaoSocial.Name = "Column_RazaoSocial";
-            Column_RazaoSocial.Width = 97;
+            Column_FornecedorID.DataPropertyName = "FornecedorID";
+            Column_FornecedorID.HeaderText = "Fornecedor";
+            Column_FornecedorID.Name = "Column_FornecedorID";
             // 
             // Column_Excluir
             // 
@@ -267,7 +257,6 @@
             groupBox_Cadastro.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDown_QuantidadeEstoque).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView_Produtos).EndInit();
-            ((System.ComponentModel.ISupportInitialize)produtoBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -287,11 +276,10 @@
         private TextBox textBox_Preco;
         private NumericUpDown numericUpDown_QuantidadeEstoque;
         private DataGridView dataGridView_Produtos;
-        private BindingSource produtoBindingSource;
         private DataGridViewTextBoxColumn Column_ID;
         private DataGridViewTextBoxColumn Column_Nome;
         private DataGridViewTextBoxColumn Column_Preco;
-        private DataGridViewTextBoxColumn Column_RazaoSocial;
+        private DataGridViewTextBoxColumn Column_FornecedorID;
         private DataGridViewButtonColumn Column_Excluir;
     }
 }

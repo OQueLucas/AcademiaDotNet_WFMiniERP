@@ -46,13 +46,15 @@ namespace AcademiaDotNet_WFMiniERP
 
         private void AtualizarFornecedor()
         {
-            var list_of_companies = _contexto.Fornecedores;
+            var fornecedores = _contexto.Fornecedores;
 
-            foreach (Fornecedor c in list_of_companies)
+            foreach (Fornecedor fornecedor in fornecedores)
             {
-                CBItem item = new CBItem();
-                item.Name = c.RazaoSocial;
-                item.Value = c.ID;
+                CBItem item = new()
+                {
+                    Name = fornecedor.RazaoSocial,
+                    Value = fornecedor.ID
+                };
                 comboBox_Fornecedor.Items.Add(item);
             }
         }
@@ -83,7 +85,8 @@ namespace AcademiaDotNet_WFMiniERP
 
         private async Task BuscaProdutos()
         {
-            var produtos = await _produtoService.FindAllAsyncTeste();
+            var produtos = await _produtoService.FindAllAsync();
+            dataGridView_Produtos.AutoGenerateColumns = false;
             dataGridView_Produtos.DataSource = produtos;
         }
     }
