@@ -28,22 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             textBox_Consultar = new TextBox();
             groupBox_Cadastro = new GroupBox();
+            numericUpDown_QuantidadeEstoque = new NumericUpDown();
+            textBox_Preco = new TextBox();
             label_Nome = new Label();
-            button_LimparCampos = new Button();
-            button_Cadastrar = new Button();
             textBox_Nome = new TextBox();
             label_Preco = new Label();
-            textBox_Preco = new TextBox();
             label_QuantidadeEstoque = new Label();
-            textBox_QuantidadeEstoque = new TextBox();
             label_Fornecedor = new Label();
             comboBox_Fornecedor = new ComboBox();
-            dataGridView_Clientes = new DataGridView();
+            button_LimparCampos = new Button();
+            button_Cadastrar = new Button();
             button_Consultar = new Button();
+            dataGridView_Produtos = new DataGridView();
+            produtoBindingSource = new BindingSource(components);
+            Column_ID = new DataGridViewTextBoxColumn();
+            Column_Nome = new DataGridViewTextBoxColumn();
+            Column_Preco = new DataGridViewTextBoxColumn();
+            Column_RazaoSocial = new DataGridViewTextBoxColumn();
+            Column_Excluir = new DataGridViewButtonColumn();
             groupBox_Cadastro.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView_Clientes).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown_QuantidadeEstoque).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView_Produtos).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)produtoBindingSource).BeginInit();
             SuspendLayout();
             // 
             // textBox_Consultar
@@ -55,12 +64,12 @@
             // 
             // groupBox_Cadastro
             // 
+            groupBox_Cadastro.Controls.Add(numericUpDown_QuantidadeEstoque);
+            groupBox_Cadastro.Controls.Add(textBox_Preco);
             groupBox_Cadastro.Controls.Add(label_Nome);
             groupBox_Cadastro.Controls.Add(textBox_Nome);
             groupBox_Cadastro.Controls.Add(label_Preco);
-            groupBox_Cadastro.Controls.Add(textBox_Preco);
             groupBox_Cadastro.Controls.Add(label_QuantidadeEstoque);
-            groupBox_Cadastro.Controls.Add(textBox_QuantidadeEstoque);
             groupBox_Cadastro.Controls.Add(label_Fornecedor);
             groupBox_Cadastro.Controls.Add(comboBox_Fornecedor);
             groupBox_Cadastro.Controls.Add(button_LimparCampos);
@@ -72,14 +81,79 @@
             groupBox_Cadastro.TabStop = false;
             groupBox_Cadastro.Text = "Cadastro";
             // 
+            // numericUpDown_QuantidadeEstoque
+            // 
+            numericUpDown_QuantidadeEstoque.Location = new Point(6, 166);
+            numericUpDown_QuantidadeEstoque.Maximum = new decimal(new int[] { 99999, 0, 0, 0 });
+            numericUpDown_QuantidadeEstoque.Name = "numericUpDown_QuantidadeEstoque";
+            numericUpDown_QuantidadeEstoque.Size = new Size(120, 23);
+            numericUpDown_QuantidadeEstoque.TabIndex = 20;
+            // 
+            // textBox_Preco
+            // 
+            textBox_Preco.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            textBox_Preco.Location = new Point(6, 103);
+            textBox_Preco.Name = "textBox_Preco";
+            textBox_Preco.Size = new Size(233, 23);
+            textBox_Preco.TabIndex = 19;
+            textBox_Preco.Leave += textBox_Preco_Leave;
+            // 
             // label_Nome
             // 
             label_Nome.AutoSize = true;
             label_Nome.Location = new Point(14, 25);
+            label_Nome.Margin = new Padding(14, 25, 14, 20);
             label_Nome.Name = "label_Nome";
             label_Nome.Size = new Size(40, 15);
             label_Nome.TabIndex = 5;
             label_Nome.Text = "Nome";
+            // 
+            // textBox_Nome
+            // 
+            textBox_Nome.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            textBox_Nome.Location = new Point(6, 45);
+            textBox_Nome.Margin = new Padding(3, 20, 3, 20);
+            textBox_Nome.Name = "textBox_Nome";
+            textBox_Nome.Size = new Size(233, 23);
+            textBox_Nome.TabIndex = 4;
+            // 
+            // label_Preco
+            // 
+            label_Preco.AutoSize = true;
+            label_Preco.Location = new Point(14, 85);
+            label_Preco.Name = "label_Preco";
+            label_Preco.Size = new Size(37, 15);
+            label_Preco.TabIndex = 3;
+            label_Preco.Text = "Preço";
+            // 
+            // label_QuantidadeEstoque
+            // 
+            label_QuantidadeEstoque.AutoSize = true;
+            label_QuantidadeEstoque.Location = new Point(14, 145);
+            label_QuantidadeEstoque.Name = "label_QuantidadeEstoque";
+            label_QuantidadeEstoque.Size = new Size(114, 15);
+            label_QuantidadeEstoque.TabIndex = 16;
+            label_QuantidadeEstoque.Text = "Quantidade Estoque";
+            // 
+            // label_Fornecedor
+            // 
+            label_Fornecedor.AutoSize = true;
+            label_Fornecedor.Location = new Point(14, 205);
+            label_Fornecedor.Name = "label_Fornecedor";
+            label_Fornecedor.Size = new Size(67, 15);
+            label_Fornecedor.TabIndex = 14;
+            label_Fornecedor.Text = "Fornecedor";
+            // 
+            // comboBox_Fornecedor
+            // 
+            comboBox_Fornecedor.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            comboBox_Fornecedor.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            comboBox_Fornecedor.AutoCompleteSource = AutoCompleteSource.ListItems;
+            comboBox_Fornecedor.FormattingEnabled = true;
+            comboBox_Fornecedor.Location = new Point(6, 225);
+            comboBox_Fornecedor.Name = "comboBox_Fornecedor";
+            comboBox_Fornecedor.Size = new Size(233, 23);
+            comboBox_Fornecedor.TabIndex = 13;
             // 
             // button_LimparCampos
             // 
@@ -107,79 +181,7 @@
             button_Cadastrar.TextAlign = ContentAlignment.MiddleRight;
             button_Cadastrar.TextImageRelation = TextImageRelation.ImageBeforeText;
             button_Cadastrar.UseVisualStyleBackColor = true;
-            // 
-            // textBox_Nome
-            // 
-            textBox_Nome.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            textBox_Nome.Location = new Point(6, 45);
-            textBox_Nome.Name = "textBox_Nome";
-            textBox_Nome.Size = new Size(233, 23);
-            textBox_Nome.TabIndex = 4;
-            // 
-            // label_Preco
-            // 
-            label_Preco.AutoSize = true;
-            label_Preco.Location = new Point(14, 85);
-            label_Preco.Name = "label_Preco";
-            label_Preco.Size = new Size(37, 15);
-            label_Preco.TabIndex = 3;
-            label_Preco.Text = "Preço";
-            // 
-            // textBox_Preco
-            // 
-            textBox_Preco.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            textBox_Preco.ImeMode = ImeMode.On;
-            textBox_Preco.Location = new Point(6, 105);
-            textBox_Preco.Name = "textBox_Preco";
-            textBox_Preco.Size = new Size(233, 23);
-            textBox_Preco.TabIndex = 2;
-            // 
-            // label_QuantidadeEstoque
-            // 
-            label_QuantidadeEstoque.AutoSize = true;
-            label_QuantidadeEstoque.Location = new Point(14, 145);
-            label_QuantidadeEstoque.Name = "label_QuantidadeEstoque";
-            label_QuantidadeEstoque.Size = new Size(114, 15);
-            label_QuantidadeEstoque.TabIndex = 16;
-            label_QuantidadeEstoque.Text = "Quantidade Estoque";
-            // 
-            // textBox_QuantidadeEstoque
-            // 
-            textBox_QuantidadeEstoque.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            textBox_QuantidadeEstoque.Location = new Point(6, 165);
-            textBox_QuantidadeEstoque.Name = "textBox_QuantidadeEstoque";
-            textBox_QuantidadeEstoque.Size = new Size(233, 23);
-            textBox_QuantidadeEstoque.TabIndex = 15;
-            // 
-            // label_Fornecedor
-            // 
-            label_Fornecedor.AutoSize = true;
-            label_Fornecedor.Location = new Point(14, 205);
-            label_Fornecedor.Name = "label_Fornecedor";
-            label_Fornecedor.Size = new Size(67, 15);
-            label_Fornecedor.TabIndex = 14;
-            label_Fornecedor.Text = "Fornecedor";
-            // 
-            // comboBox_Fornecedor
-            // 
-            comboBox_Fornecedor.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            comboBox_Fornecedor.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            comboBox_Fornecedor.AutoCompleteSource = AutoCompleteSource.ListItems;
-            comboBox_Fornecedor.FormattingEnabled = true;
-            comboBox_Fornecedor.Location = new Point(6, 225);
-            comboBox_Fornecedor.Name = "comboBox_Fornecedor";
-            comboBox_Fornecedor.Size = new Size(233, 23);
-            comboBox_Fornecedor.TabIndex = 13;
-            // 
-            // dataGridView_Clientes
-            // 
-            dataGridView_Clientes.BackgroundColor = SystemColors.ControlLight;
-            dataGridView_Clientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView_Clientes.Location = new Point(12, 87);
-            dataGridView_Clientes.Name = "dataGridView_Clientes";
-            dataGridView_Clientes.RowTemplate.Height = 25;
-            dataGridView_Clientes.Size = new Size(917, 662);
-            dataGridView_Clientes.TabIndex = 13;
+            button_Cadastrar.Click += button_Cadastrar_Click;
             // 
             // button_Consultar
             // 
@@ -194,21 +196,78 @@
             button_Consultar.TextImageRelation = TextImageRelation.ImageBeforeText;
             button_Consultar.UseVisualStyleBackColor = true;
             // 
+            // dataGridView_Produtos
+            // 
+            dataGridView_Produtos.AutoGenerateColumns = false;
+            dataGridView_Produtos.BackgroundColor = SystemColors.ControlLight;
+            dataGridView_Produtos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView_Produtos.Columns.AddRange(new DataGridViewColumn[] { Column_ID, Column_Nome, Column_Preco, Column_RazaoSocial, Column_Excluir });
+            dataGridView_Produtos.DataSource = produtoBindingSource;
+            dataGridView_Produtos.Location = new Point(12, 87);
+            dataGridView_Produtos.Name = "dataGridView_Produtos";
+            dataGridView_Produtos.RowTemplate.Height = 25;
+            dataGridView_Produtos.Size = new Size(917, 666);
+            dataGridView_Produtos.TabIndex = 20;
+            // 
+            // produtoBindingSource
+            // 
+            produtoBindingSource.DataSource = typeof(DataModels.Produto);
+            // 
+            // Column_ID
+            // 
+            Column_ID.DataPropertyName = "ID";
+            Column_ID.HeaderText = "ID";
+            Column_ID.Name = "Column_ID";
+            Column_ID.Visible = false;
+            // 
+            // Column_Nome
+            // 
+            Column_Nome.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            Column_Nome.DataPropertyName = "Nome";
+            Column_Nome.HeaderText = "Nome";
+            Column_Nome.Name = "Column_Nome";
+            Column_Nome.Width = 65;
+            // 
+            // Column_Preco
+            // 
+            Column_Preco.DataPropertyName = "Preco";
+            Column_Preco.HeaderText = "Preço";
+            Column_Preco.Name = "Column_Preco";
+            // 
+            // Column_RazaoSocial
+            // 
+            Column_RazaoSocial.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            Column_RazaoSocial.DataPropertyName = "RazaoSocial";
+            Column_RazaoSocial.HeaderText = "Razão Social";
+            Column_RazaoSocial.Name = "Column_RazaoSocial";
+            Column_RazaoSocial.Width = 97;
+            // 
+            // Column_Excluir
+            // 
+            Column_Excluir.HeaderText = "Excluir";
+            Column_Excluir.Name = "Column_Excluir";
+            Column_Excluir.Resizable = DataGridViewTriState.True;
+            Column_Excluir.SortMode = DataGridViewColumnSortMode.Automatic;
+            Column_Excluir.Text = "Excluir";
+            Column_Excluir.UseColumnTextForButtonValue = true;
+            // 
             // FormProduto
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(1264, 761);
+            Controls.Add(dataGridView_Produtos);
             Controls.Add(textBox_Consultar);
             Controls.Add(button_Consultar);
-            Controls.Add(dataGridView_Clientes);
             Controls.Add(groupBox_Cadastro);
             Name = "FormProduto";
             Text = "FormProduto";
             groupBox_Cadastro.ResumeLayout(false);
             groupBox_Cadastro.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView_Clientes).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown_QuantidadeEstoque).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView_Produtos).EndInit();
+            ((System.ComponentModel.ISupportInitialize)produtoBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -219,14 +278,20 @@
         private Label label_Nome;
         private TextBox textBox_Nome;
         private Label label_Preco;
-        private TextBox textBox_Preco;
         private Label label_QuantidadeEstoque;
-        private TextBox textBox_QuantidadeEstoque;
         private Label label_Fornecedor;
         private ComboBox comboBox_Fornecedor;
-        private DataGridView dataGridView_Clientes;
         private Button button_Consultar;
         private Button button_LimparCampos;
         private Button button_Cadastrar;
+        private TextBox textBox_Preco;
+        private NumericUpDown numericUpDown_QuantidadeEstoque;
+        private DataGridView dataGridView_Produtos;
+        private BindingSource produtoBindingSource;
+        private DataGridViewTextBoxColumn Column_ID;
+        private DataGridViewTextBoxColumn Column_Nome;
+        private DataGridViewTextBoxColumn Column_Preco;
+        private DataGridViewTextBoxColumn Column_RazaoSocial;
+        private DataGridViewButtonColumn Column_Excluir;
     }
 }

@@ -11,7 +11,7 @@ namespace AcademiaDotNet_WFMiniERP
         {
             InitializeComponent();
             CenterToParent();
-            BuscaClientes();
+            BuscaFornecedores();
         }
 
         private void button_Cadastrar_Click(object sender, EventArgs e)
@@ -65,7 +65,7 @@ namespace AcademiaDotNet_WFMiniERP
                 if (adicionado)
                 {
                     LimparCampos();
-                    BuscaClientes();
+                    BuscaFornecedores();
                     MessageBox.Show("Fornecedor inserido com sucesso!");
                 }
             }
@@ -75,10 +75,10 @@ namespace AcademiaDotNet_WFMiniERP
             }
         }
 
-        private async Task BuscaClientes()
+        private async Task BuscaFornecedores()
         {
-            var clientes = await _fornecedorService.FindAllAsync();
-            dataGridView_Fornecedores.DataSource = clientes;
+            var fornecedores = await _fornecedorService.FindAllAsync();
+            dataGridView_Fornecedores.DataSource = fornecedores;
         }
 
         private async Task<bool> Excluir(int id)
@@ -86,7 +86,7 @@ namespace AcademiaDotNet_WFMiniERP
             bool excluido = await _fornecedorService.RemoveAsync(id);
             if (excluido)
             {
-                BuscaClientes();
+                BuscaFornecedores();
                 MessageBox.Show("Excluído com sucesso!");
                 return true;
             }
@@ -95,7 +95,6 @@ namespace AcademiaDotNet_WFMiniERP
 
         private void LimparCampos()
         {
-
             maskedTextBox_CNPJ.Text = String.Empty;
             textBox_RazaoSocial.Text = String.Empty;
         }

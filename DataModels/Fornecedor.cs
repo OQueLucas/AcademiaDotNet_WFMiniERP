@@ -5,5 +5,6 @@
         public int ID { get; set; }
         public string CNPJ { get; set; }
         public string RazaoSocial { get; set; }
+        public virtual ICollection<Produto>? Produtos { get; set; }
     }
 }

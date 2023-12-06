@@ -4,6 +4,7 @@ using AcademiaDotNet_WFMiniERP.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AcademiaDotNet_WFMiniERP.Migrations
 {
     [DbContext(typeof(Contexto))]
-    partial class ContextoModelSnapshot : ModelSnapshot
+    [Migration("20231206010113_fornecedorID-foreignkey")]
+    partial class fornecedorIDforeignkey
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,7 +46,7 @@ namespace AcademiaDotNet_WFMiniERP.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Clientes", (string)null);
+                    b.ToTable("Clientes");
                 });
 
             modelBuilder.Entity("AcademiaDotNet_WFMiniERP.DataModels.Fornecedor", b =>
@@ -65,7 +67,7 @@ namespace AcademiaDotNet_WFMiniERP.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Fornecedores", (string)null);
+                    b.ToTable("Fornecedores");
                 });
 
             modelBuilder.Entity("AcademiaDotNet_WFMiniERP.DataModels.ItemNota", b =>
@@ -101,7 +103,7 @@ namespace AcademiaDotNet_WFMiniERP.Migrations
 
                     b.HasIndex("ProdutoID");
 
-                    b.ToTable("ItemNota", (string)null);
+                    b.ToTable("ItemNota");
                 });
 
             modelBuilder.Entity("AcademiaDotNet_WFMiniERP.DataModels.Nota", b =>
@@ -125,7 +127,7 @@ namespace AcademiaDotNet_WFMiniERP.Migrations
 
                     b.HasIndex("ClienteID");
 
-                    b.ToTable("Notas", (string)null);
+                    b.ToTable("Notas");
                 });
 
             modelBuilder.Entity("AcademiaDotNet_WFMiniERP.DataModels.Produto", b =>
@@ -150,7 +152,7 @@ namespace AcademiaDotNet_WFMiniERP.Migrations
 
                     b.HasIndex("FornecedorID");
 
-                    b.ToTable("Produtos", (string)null);
+                    b.ToTable("Produtos");
                 });
 
             modelBuilder.Entity("AcademiaDotNet_WFMiniERP.DataModels.ItemNota", b =>

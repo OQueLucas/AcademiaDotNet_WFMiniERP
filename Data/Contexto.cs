@@ -33,11 +33,14 @@ namespace AcademiaDotNet_WFMiniERP.Data
                 .IsRequired();
 
             modelBuilder.Entity<Produto>()
-                .HasOne(produto => produto.Fornecedor);
+                .HasOne(produto => produto.Fornecedor)
+                .WithMany(fornecedor => fornecedor.Produtos)
+                .HasForeignKey(produto => produto.FornecedorID)
+                .HasPrincipalKey(fornecedor => fornecedor.ID)
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<ItemNota>()
                 .HasOne(item => item.Produto);
         }
     }
 }
-    
