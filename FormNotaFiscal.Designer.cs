@@ -42,15 +42,21 @@
             Column_Status = new DataGridViewTextBoxColumn();
             Column_Cliente = new DataGridViewTextBoxColumn();
             groupBox_VisualizarNota = new GroupBox();
-            label_Status = new Label();
-            comboBox_Status = new ComboBox();
-            maskedTextBox_DataEmissao = new MaskedTextBox();
-            label_DataEmissao = new Label();
+            button_CancelarNota = new Button();
             label_Cliente = new Label();
             textBox_Cliente = new TextBox();
             label_CPF = new Label();
             maskedTextBox_CPF = new MaskedTextBox();
             dataGridView_ItensNota = new DataGridView();
+            Column_ItemID = new DataGridViewTextBoxColumn();
+            Column_ItemNome = new DataGridViewTextBoxColumn();
+            Column_ItemPreco = new DataGridViewTextBoxColumn();
+            Column_ItemQuantidade = new DataGridViewTextBoxColumn();
+            Column_ItemValorTotal = new DataGridViewTextBoxColumn();
+            label_DataEmissao = new Label();
+            maskedTextBox_DataEmissao = new MaskedTextBox();
+            label_Status = new Label();
+            comboBox_Status = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView_Notas).BeginInit();
             groupBox_VisualizarNota.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView_ItensNota).BeginInit();
@@ -59,7 +65,7 @@
             // button_RemoverFiltros
             // 
             button_RemoverFiltros.Image = Properties.Resources.clear_filters_black;
-            button_RemoverFiltros.Location = new Point(579, 24);
+            button_RemoverFiltros.Location = new Point(579, 6);
             button_RemoverFiltros.Name = "button_RemoverFiltros";
             button_RemoverFiltros.Size = new Size(107, 40);
             button_RemoverFiltros.TabIndex = 16;
@@ -71,7 +77,7 @@
             // button_Filtrar
             // 
             button_Filtrar.Image = Properties.Resources.filter_black;
-            button_Filtrar.Location = new Point(468, 24);
+            button_Filtrar.Location = new Point(599, 55);
             button_Filtrar.Name = "button_Filtrar";
             button_Filtrar.Size = new Size(87, 40);
             button_Filtrar.TabIndex = 15;
@@ -83,7 +89,8 @@
             // label_FiltroDataEmissao
             // 
             label_FiltroDataEmissao.AutoSize = true;
-            label_FiltroDataEmissao.Location = new Point(12, 50);
+            label_FiltroDataEmissao.Location = new Point(14, 78);
+            label_FiltroDataEmissao.Margin = new Padding(5);
             label_FiltroDataEmissao.Name = "label_FiltroDataEmissao";
             label_FiltroDataEmissao.Size = new Size(77, 15);
             label_FiltroDataEmissao.TabIndex = 14;
@@ -92,7 +99,8 @@
             // label_FiltroStatus
             // 
             label_FiltroStatus.AutoSize = true;
-            label_FiltroStatus.Location = new Point(187, 9);
+            label_FiltroStatus.Location = new Point(14, 42);
+            label_FiltroStatus.Margin = new Padding(5);
             label_FiltroStatus.Name = "label_FiltroStatus";
             label_FiltroStatus.Size = new Size(39, 15);
             label_FiltroStatus.TabIndex = 13;
@@ -101,14 +109,16 @@
             // comboBox_FiltroStatus
             // 
             comboBox_FiltroStatus.FormattingEnabled = true;
-            comboBox_FiltroStatus.Location = new Point(237, 6);
+            comboBox_FiltroStatus.Location = new Point(99, 39);
+            comboBox_FiltroStatus.Margin = new Padding(5);
             comboBox_FiltroStatus.Name = "comboBox_FiltroStatus";
             comboBox_FiltroStatus.Size = new Size(102, 23);
             comboBox_FiltroStatus.TabIndex = 12;
             // 
             // dateTimePicker_FiltroDataEmissao
             // 
-            dateTimePicker_FiltroDataEmissao.Location = new Point(95, 47);
+            dateTimePicker_FiltroDataEmissao.Location = new Point(99, 72);
+            dateTimePicker_FiltroDataEmissao.Margin = new Padding(5);
             dateTimePicker_FiltroDataEmissao.Name = "dateTimePicker_FiltroDataEmissao";
             dateTimePicker_FiltroDataEmissao.Size = new Size(154, 23);
             dateTimePicker_FiltroDataEmissao.TabIndex = 11;
@@ -116,7 +126,8 @@
             // label_FiltroCliente
             // 
             label_FiltroCliente.AutoSize = true;
-            label_FiltroCliente.Location = new Point(15, 9);
+            label_FiltroCliente.Location = new Point(14, 9);
+            label_FiltroCliente.Margin = new Padding(5);
             label_FiltroCliente.Name = "label_FiltroCliente";
             label_FiltroCliente.Size = new Size(44, 15);
             label_FiltroCliente.TabIndex = 10;
@@ -125,7 +136,8 @@
             // comboBox_FiltroCliente
             // 
             comboBox_FiltroCliente.FormattingEnabled = true;
-            comboBox_FiltroCliente.Location = new Point(65, 6);
+            comboBox_FiltroCliente.Location = new Point(99, 6);
+            comboBox_FiltroCliente.Margin = new Padding(5);
             comboBox_FiltroCliente.Name = "comboBox_FiltroCliente";
             comboBox_FiltroCliente.Size = new Size(102, 23);
             comboBox_FiltroCliente.TabIndex = 9;
@@ -138,12 +150,14 @@
             dataGridView_Notas.BackgroundColor = SystemColors.ControlLight;
             dataGridView_Notas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView_Notas.Columns.AddRange(new DataGridViewColumn[] { Column_ID, Column_Data_Emissao, Column_Status, Column_Cliente });
-            dataGridView_Notas.Location = new Point(12, 83);
+            dataGridView_Notas.Location = new Point(12, 113);
             dataGridView_Notas.Name = "dataGridView_Notas";
             dataGridView_Notas.ReadOnly = true;
             dataGridView_Notas.RowTemplate.Height = 25;
-            dataGridView_Notas.Size = new Size(674, 666);
+            dataGridView_Notas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView_Notas.Size = new Size(674, 636);
             dataGridView_Notas.TabIndex = 17;
+            dataGridView_Notas.RowEnter += dataGridView_Notas_RowEnter;
             // 
             // Column_ID
             // 
@@ -154,24 +168,31 @@
             // 
             // Column_Data_Emissao
             // 
+            Column_Data_Emissao.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             Column_Data_Emissao.HeaderText = "Data de Emissão";
             Column_Data_Emissao.Name = "Column_Data_Emissao";
             Column_Data_Emissao.ReadOnly = true;
+            Column_Data_Emissao.Width = 108;
             // 
             // Column_Status
             // 
+            Column_Status.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             Column_Status.HeaderText = "Status";
             Column_Status.Name = "Column_Status";
             Column_Status.ReadOnly = true;
+            Column_Status.Width = 64;
             // 
             // Column_Cliente
             // 
+            Column_Cliente.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             Column_Cliente.HeaderText = "Cliente";
             Column_Cliente.Name = "Column_Cliente";
             Column_Cliente.ReadOnly = true;
+            Column_Cliente.Width = 69;
             // 
             // groupBox_VisualizarNota
             // 
+            groupBox_VisualizarNota.Controls.Add(button_CancelarNota);
             groupBox_VisualizarNota.Controls.Add(label_Cliente);
             groupBox_VisualizarNota.Controls.Add(textBox_Cliente);
             groupBox_VisualizarNota.Controls.Add(label_CPF);
@@ -188,45 +209,16 @@
             groupBox_VisualizarNota.TabStop = false;
             groupBox_VisualizarNota.Text = "Visualizar";
             // 
-            // label_Status
+            // button_CancelarNota
             // 
-            label_Status.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            label_Status.AutoSize = true;
-            label_Status.Location = new Point(10, 711);
-            label_Status.Name = "label_Status";
-            label_Status.Size = new Size(42, 15);
-            label_Status.TabIndex = 22;
-            label_Status.Text = "Status:";
-            // 
-            // comboBox_Status
-            // 
-            comboBox_Status.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            comboBox_Status.FormattingEnabled = true;
-            comboBox_Status.Location = new Point(58, 708);
-            comboBox_Status.Name = "comboBox_Status";
-            comboBox_Status.Size = new Size(121, 23);
-            comboBox_Status.TabIndex = 21;
-            // 
-            // maskedTextBox_DataEmissao
-            // 
-            maskedTextBox_DataEmissao.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            maskedTextBox_DataEmissao.Enabled = false;
-            maskedTextBox_DataEmissao.Location = new Point(112, 679);
-            maskedTextBox_DataEmissao.Mask = "00/00/0000 90:00";
-            maskedTextBox_DataEmissao.Name = "maskedTextBox_DataEmissao";
-            maskedTextBox_DataEmissao.Size = new Size(87, 23);
-            maskedTextBox_DataEmissao.TabIndex = 20;
-            maskedTextBox_DataEmissao.ValidatingType = typeof(DateTime);
-            // 
-            // label_DataEmissao
-            // 
-            label_DataEmissao.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            label_DataEmissao.AutoSize = true;
-            label_DataEmissao.Location = new Point(10, 682);
-            label_DataEmissao.Name = "label_DataEmissao";
-            label_DataEmissao.Size = new Size(96, 15);
-            label_DataEmissao.TabIndex = 19;
-            label_DataEmissao.Text = "Data de Emissão:";
+            button_CancelarNota.Image = Properties.Resources.x_red;
+            button_CancelarNota.Location = new Point(433, 679);
+            button_CancelarNota.Name = "button_CancelarNota";
+            button_CancelarNota.Size = new Size(91, 52);
+            button_CancelarNota.TabIndex = 23;
+            button_CancelarNota.Text = "Cancelar Nota";
+            button_CancelarNota.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button_CancelarNota.UseVisualStyleBackColor = true;
             // 
             // label_Cliente
             // 
@@ -271,14 +263,87 @@
             dataGridView_ItensNota.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView_ItensNota.BackgroundColor = SystemColors.ControlLight;
             dataGridView_ItensNota.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView_ItensNota.Enabled = false;
+            dataGridView_ItensNota.Columns.AddRange(new DataGridViewColumn[] { Column_ItemID, Column_ItemNome, Column_ItemPreco, Column_ItemQuantidade, Column_ItemValorTotal });
             dataGridView_ItensNota.Location = new Point(6, 80);
             dataGridView_ItensNota.MultiSelect = false;
             dataGridView_ItensNota.Name = "dataGridView_ItensNota";
             dataGridView_ItensNota.ReadOnly = true;
             dataGridView_ItensNota.RowTemplate.Height = 25;
+            dataGridView_ItensNota.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView_ItensNota.Size = new Size(518, 593);
             dataGridView_ItensNota.TabIndex = 10;
+            // 
+            // Column_ItemID
+            // 
+            Column_ItemID.HeaderText = "ID";
+            Column_ItemID.Name = "Column_ItemID";
+            Column_ItemID.ReadOnly = true;
+            Column_ItemID.Visible = false;
+            // 
+            // Column_ItemNome
+            // 
+            Column_ItemNome.HeaderText = "Nome";
+            Column_ItemNome.Name = "Column_ItemNome";
+            Column_ItemNome.ReadOnly = true;
+            // 
+            // Column_ItemPreco
+            // 
+            Column_ItemPreco.HeaderText = "Preço";
+            Column_ItemPreco.Name = "Column_ItemPreco";
+            Column_ItemPreco.ReadOnly = true;
+            // 
+            // Column_ItemQuantidade
+            // 
+            Column_ItemQuantidade.HeaderText = "Quantidade";
+            Column_ItemQuantidade.Name = "Column_ItemQuantidade";
+            Column_ItemQuantidade.ReadOnly = true;
+            // 
+            // Column_ItemValorTotal
+            // 
+            Column_ItemValorTotal.HeaderText = "ValorTotal";
+            Column_ItemValorTotal.Name = "Column_ItemValorTotal";
+            Column_ItemValorTotal.ReadOnly = true;
+            // 
+            // label_DataEmissao
+            // 
+            label_DataEmissao.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            label_DataEmissao.AutoSize = true;
+            label_DataEmissao.Location = new Point(10, 682);
+            label_DataEmissao.Name = "label_DataEmissao";
+            label_DataEmissao.Size = new Size(96, 15);
+            label_DataEmissao.TabIndex = 19;
+            label_DataEmissao.Text = "Data de Emissão:";
+            // 
+            // maskedTextBox_DataEmissao
+            // 
+            maskedTextBox_DataEmissao.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            maskedTextBox_DataEmissao.Enabled = false;
+            maskedTextBox_DataEmissao.Location = new Point(112, 679);
+            maskedTextBox_DataEmissao.Mask = "00/00/0000 90:00";
+            maskedTextBox_DataEmissao.Name = "maskedTextBox_DataEmissao";
+            maskedTextBox_DataEmissao.Size = new Size(87, 23);
+            maskedTextBox_DataEmissao.TabIndex = 20;
+            maskedTextBox_DataEmissao.ValidatingType = typeof(DateTime);
+            // 
+            // label_Status
+            // 
+            label_Status.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            label_Status.AutoSize = true;
+            label_Status.Location = new Point(10, 711);
+            label_Status.Name = "label_Status";
+            label_Status.Size = new Size(42, 15);
+            label_Status.TabIndex = 22;
+            label_Status.Text = "Status:";
+            // 
+            // comboBox_Status
+            // 
+            comboBox_Status.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            comboBox_Status.Enabled = false;
+            comboBox_Status.FormattingEnabled = true;
+            comboBox_Status.Location = new Point(112, 708);
+            comboBox_Status.Name = "comboBox_Status";
+            comboBox_Status.Size = new Size(121, 23);
+            comboBox_Status.TabIndex = 21;
             // 
             // FormNotaFiscal
             // 
@@ -331,5 +396,11 @@
         private Label label_CPF;
         private MaskedTextBox maskedTextBox_CPF;
         private DataGridView dataGridView_ItensNota;
+        private DataGridViewTextBoxColumn Column_ItemID;
+        private DataGridViewTextBoxColumn Column_ItemNome;
+        private DataGridViewTextBoxColumn Column_ItemPreco;
+        private DataGridViewTextBoxColumn Column_ItemQuantidade;
+        private DataGridViewTextBoxColumn Column_ItemValorTotal;
+        private Button button_CancelarNota;
     }
 }

@@ -159,6 +159,7 @@
             // 
             // dataGridView_Clientes
             // 
+            dataGridView_Clientes.AllowUserToAddRows = false;
             dataGridView_Clientes.BackgroundColor = SystemColors.ControlLight;
             dataGridView_Clientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView_Clientes.Columns.AddRange(new DataGridViewColumn[] { Column_ID, Column_CPF, Column_Nome, Column_Email, Column_Excluir, Column_Notas });

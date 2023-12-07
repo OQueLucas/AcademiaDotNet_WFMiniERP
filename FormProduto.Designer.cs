@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             textBox_Consultar = new TextBox();
             groupBox_Cadastro = new GroupBox();
             numericUpDown_QuantidadeEstoque = new NumericUpDown();
@@ -196,6 +195,7 @@
             // 
             // dataGridView_Produtos
             // 
+            dataGridView_Produtos.AllowUserToAddRows = false;
             dataGridView_Produtos.BackgroundColor = SystemColors.ControlLight;
             dataGridView_Produtos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView_Produtos.Columns.AddRange(new DataGridViewColumn[] { Column_ID, Column_Nome, Column_Preco, Column_FornecedorID, Column_Excluir });
@@ -204,6 +204,7 @@
             dataGridView_Produtos.RowTemplate.Height = 25;
             dataGridView_Produtos.Size = new Size(917, 666);
             dataGridView_Produtos.TabIndex = 20;
+            dataGridView_Produtos.CellClick += dataGridView_Produtos_CellClick;
             // 
             // Column_ID
             // 

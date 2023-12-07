@@ -2,8 +2,8 @@
 {
     internal class CBItem
     {
+        public int ID { get; set; }
         public string Name { get; set; }
-        public int Value { get; set; }
 
         public override string ToString()
         {

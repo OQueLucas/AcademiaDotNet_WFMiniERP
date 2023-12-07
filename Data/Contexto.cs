@@ -23,6 +23,8 @@ namespace AcademiaDotNet_WFMiniERP.Data
             modelBuilder.Entity<Nota>()
                 .HasOne(nota => nota.Cliente)
                 .WithMany(cliente => cliente.Notas)
+                .HasPrincipalKey(cliente => cliente.ID)
+                .HasForeignKey(nota => nota.ClienteID)
                 .OnDelete(DeleteBehavior.NoAction)
                 .IsRequired();
 

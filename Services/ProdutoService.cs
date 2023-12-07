@@ -1,6 +1,5 @@
 ﻿using AcademiaDotNet_WFMiniERP.Data;
 using AcademiaDotNet_WFMiniERP.DataModels;
-using AcademiaDotNet_WFMiniERP.ViewModel;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
 
@@ -30,17 +29,16 @@ namespace AcademiaDotNet_WFMiniERP.Services
             return await _contexto.Produtos.ToListAsync();
         }
 
-        public async Task<IList<ProdutoViewModel>> FindAllAsyncQuery()
+        public async Task<IList<Produto>> FindAllAsyncQuery()
         {
-            //var query = (from Produto produtos in _contexto.Produtos.AsEnumerable() join fornecedor in _contexto.Fornecedores on produtos.FornecedorID equals fornecedor.ID select new { produtos.ID, produtos.Nome, produtos.Preco, fornecedor.RazaoSocial });
             var  query = await _contexto.Produtos
                 .Join(_contexto.Fornecedores, produto => produto.FornecedorID, fornecedor => fornecedor.ID, (produto, fornecedor) => new { produto, fornecedor})
-                .Select(x => new ProdutoViewModel
+                .Select(x => new Produto
                 {
                     ID = x.produto.ID,
                     Nome = x.produto.Nome,
                     Preco = x.produto.Preco,
-                    RazaoSocial = x.fornecedor.RazaoSocial
+                    Fornecedor = x.fornecedor
                 }).ToListAsync();
             return query;
         }

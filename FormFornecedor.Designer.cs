@@ -37,11 +37,11 @@
             label_RazaoSocial = new Label();
             textBox_RazaoSocial = new TextBox();
             dataGridView_Fornecedores = new DataGridView();
-            button_Consultar = new Button();
             Column_ID = new DataGridViewTextBoxColumn();
             Column_CNPJ = new DataGridViewTextBoxColumn();
             Column_RazaoSocial = new DataGridViewTextBoxColumn();
             Column_Excluir = new DataGridViewButtonColumn();
+            button_Consultar = new Button();
             groupBox_Cadastro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView_Fornecedores).BeginInit();
             SuspendLayout();
@@ -135,6 +135,7 @@
             // 
             // dataGridView_Fornecedores
             // 
+            dataGridView_Fornecedores.AllowUserToAddRows = false;
             dataGridView_Fornecedores.BackgroundColor = SystemColors.ControlLight;
             dataGridView_Fornecedores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView_Fornecedores.Columns.AddRange(new DataGridViewColumn[] { Column_ID, Column_CNPJ, Column_RazaoSocial, Column_Excluir });
@@ -144,19 +145,6 @@
             dataGridView_Fornecedores.Size = new Size(917, 666);
             dataGridView_Fornecedores.TabIndex = 5;
             dataGridView_Fornecedores.CellClick += dataGridView_Fornecedores_CellClick;
-            // 
-            // button_Consultar
-            // 
-            button_Consultar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            button_Consultar.Image = Properties.Resources.search_black;
-            button_Consultar.Location = new Point(821, 41);
-            button_Consultar.Name = "button_Consultar";
-            button_Consultar.Size = new Size(108, 40);
-            button_Consultar.TabIndex = 16;
-            button_Consultar.Text = "Consultar";
-            button_Consultar.TextAlign = ContentAlignment.MiddleRight;
-            button_Consultar.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button_Consultar.UseVisualStyleBackColor = true;
             // 
             // Column_ID
             // 
@@ -184,11 +172,24 @@
             // Column_Excluir
             // 
             Column_Excluir.HeaderText = "Excluir";
-            Column_Excluir.Text = "Excluir";
             Column_Excluir.Name = "Column_Excluir";
-            Column_Excluir.UseColumnTextForButtonValue = true;
             Column_Excluir.Resizable = DataGridViewTriState.True;
             Column_Excluir.SortMode = DataGridViewColumnSortMode.Automatic;
+            Column_Excluir.Text = "Excluir";
+            Column_Excluir.UseColumnTextForButtonValue = true;
+            // 
+            // button_Consultar
+            // 
+            button_Consultar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            button_Consultar.Image = Properties.Resources.search_black;
+            button_Consultar.Location = new Point(821, 41);
+            button_Consultar.Name = "button_Consultar";
+            button_Consultar.Size = new Size(108, 40);
+            button_Consultar.TabIndex = 16;
+            button_Consultar.Text = "Consultar";
+            button_Consultar.TextAlign = ContentAlignment.MiddleRight;
+            button_Consultar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button_Consultar.UseVisualStyleBackColor = true;
             // 
             // FormFornecedor
             // 

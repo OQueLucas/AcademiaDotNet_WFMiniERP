@@ -78,6 +78,7 @@ namespace AcademiaDotNet_WFMiniERP
         private async Task BuscaFornecedores()
         {
             var fornecedores = await _fornecedorService.FindAllAsync();
+            dataGridView_Fornecedores.AutoGenerateColumns = false;
             dataGridView_Fornecedores.DataSource = fornecedores;
         }
 

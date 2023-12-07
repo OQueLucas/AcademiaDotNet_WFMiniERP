@@ -44,6 +44,28 @@ namespace AcademiaDotNet_WFMiniERP
             }
         }
 
+
+        private void dataGridView_Produtos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            bool excluirClick = e.ColumnIndex == dataGridView_Produtos.Rows[e.RowIndex].Cells["Column_Excluir"].ColumnIndex;
+
+            if (!excluirClick) return;
+
+            int id = int.Parse(dataGridView_Produtos.Rows[e.RowIndex].Cells["Column_ID"].Value.ToString());
+            Excluir(id);
+        }
+        private async Task<bool> Excluir(int id)
+        {
+            bool excluido = await _produtoService.RemoveAsync(id);
+            if (excluido)
+            {
+                BuscaProdutos();
+                MessageBox.Show("Excluído com sucesso!");
+                return true;
+            }
+            return false;
+        }
+
         private void AtualizarFornecedor()
         {
             var fornecedores = _contexto.Fornecedores;
@@ -52,8 +74,8 @@ namespace AcademiaDotNet_WFMiniERP
             {
                 CBItem item = new()
                 {
-                    Name = fornecedor.RazaoSocial,
-                    Value = fornecedor.ID
+                    ID = fornecedor.ID,
+                    Name = fornecedor.RazaoSocial
                 };
                 comboBox_Fornecedor.Items.Add(item);
             }
@@ -70,7 +92,7 @@ namespace AcademiaDotNet_WFMiniERP
             {
                 Nome = textBox_Nome.Text,
                 Preco = double.Parse(textBox_Preco.Text),
-                FornecedorID = (comboBox_Fornecedor.SelectedItem as CBItem).Value
+                FornecedorID = (comboBox_Fornecedor.SelectedItem as CBItem).ID
             };
 
             bool adicionado = await _produtoService.InsertAsync(produto);
@@ -85,9 +107,15 @@ namespace AcademiaDotNet_WFMiniERP
 
         private async Task BuscaProdutos()
         {
-            var produtos = await _produtoService.FindAllAsync();
+            dataGridView_Produtos.Rows.Clear();
+
+            var produtos = await _produtoService.FindAllAsyncQuery();
             dataGridView_Produtos.AutoGenerateColumns = false;
-            dataGridView_Produtos.DataSource = produtos;
+
+            foreach (Produto produto in produtos)
+            {
+                dataGridView_Produtos.Rows.Add(new string[] { produto.ID.ToString(), produto.Nome, produto.Preco.ToString(), produto.Fornecedor.RazaoSocial });
+            }
         }
     }
 }
