@@ -33,7 +33,7 @@
             label_FiltroDataEmissao = new Label();
             label_FiltroStatus = new Label();
             comboBox_FiltroStatus = new ComboBox();
-            dateTimePicker_FiltroDataEmissao = new DateTimePicker();
+            dateTimePicker_FiltroInicioDataEmissao = new DateTimePicker();
             label_FiltroCliente = new Label();
             comboBox_FiltroCliente = new ComboBox();
             dataGridView_Notas = new DataGridView();
@@ -57,6 +57,7 @@
             maskedTextBox_DataEmissao = new MaskedTextBox();
             label_Status = new Label();
             comboBox_Status = new ComboBox();
+            dateTimePicker_FiltroFinalDataEmissao = new DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)dataGridView_Notas).BeginInit();
             groupBox_VisualizarNota.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView_ItensNota).BeginInit();
@@ -114,16 +115,16 @@
             comboBox_FiltroStatus.Location = new Point(99, 39);
             comboBox_FiltroStatus.Margin = new Padding(5);
             comboBox_FiltroStatus.Name = "comboBox_FiltroStatus";
-            comboBox_FiltroStatus.Size = new Size(154, 23);
+            comboBox_FiltroStatus.Size = new Size(253, 23);
             comboBox_FiltroStatus.TabIndex = 12;
             // 
-            // dateTimePicker_FiltroDataEmissao
+            // dateTimePicker_FiltroInicioDataEmissao
             // 
-            dateTimePicker_FiltroDataEmissao.Location = new Point(99, 72);
-            dateTimePicker_FiltroDataEmissao.Margin = new Padding(5);
-            dateTimePicker_FiltroDataEmissao.Name = "dateTimePicker_FiltroDataEmissao";
-            dateTimePicker_FiltroDataEmissao.Size = new Size(154, 23);
-            dateTimePicker_FiltroDataEmissao.TabIndex = 11;
+            dateTimePicker_FiltroInicioDataEmissao.Location = new Point(14, 103);
+            dateTimePicker_FiltroInicioDataEmissao.Margin = new Padding(5);
+            dateTimePicker_FiltroInicioDataEmissao.Name = "dateTimePicker_FiltroInicioDataEmissao";
+            dateTimePicker_FiltroInicioDataEmissao.Size = new Size(253, 23);
+            dateTimePicker_FiltroInicioDataEmissao.TabIndex = 11;
             // 
             // label_FiltroCliente
             // 
@@ -141,7 +142,7 @@
             comboBox_FiltroCliente.Location = new Point(99, 6);
             comboBox_FiltroCliente.Margin = new Padding(5);
             comboBox_FiltroCliente.Name = "comboBox_FiltroCliente";
-            comboBox_FiltroCliente.Size = new Size(154, 23);
+            comboBox_FiltroCliente.Size = new Size(253, 23);
             comboBox_FiltroCliente.TabIndex = 9;
             // 
             // dataGridView_Notas
@@ -152,12 +153,12 @@
             dataGridView_Notas.BackgroundColor = SystemColors.ControlLight;
             dataGridView_Notas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView_Notas.Columns.AddRange(new DataGridViewColumn[] { Column_ID, Column_Data_Emissao, Column_Status, Column_Cliente });
-            dataGridView_Notas.Location = new Point(12, 113);
+            dataGridView_Notas.Location = new Point(12, 149);
             dataGridView_Notas.Name = "dataGridView_Notas";
             dataGridView_Notas.ReadOnly = true;
             dataGridView_Notas.RowTemplate.Height = 25;
             dataGridView_Notas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView_Notas.Size = new Size(674, 636);
+            dataGridView_Notas.Size = new Size(674, 600);
             dataGridView_Notas.TabIndex = 17;
             dataGridView_Notas.RowEnter += dataGridView_Notas_RowEnter;
             // 
@@ -348,18 +349,27 @@
             comboBox_Status.Size = new Size(121, 23);
             comboBox_Status.TabIndex = 21;
             // 
+            // dateTimePicker_FiltroFinalDataEmissao
+            // 
+            dateTimePicker_FiltroFinalDataEmissao.Location = new Point(277, 103);
+            dateTimePicker_FiltroFinalDataEmissao.Margin = new Padding(5);
+            dateTimePicker_FiltroFinalDataEmissao.Name = "dateTimePicker_FiltroFinalDataEmissao";
+            dateTimePicker_FiltroFinalDataEmissao.Size = new Size(253, 23);
+            dateTimePicker_FiltroFinalDataEmissao.TabIndex = 19;
+            // 
             // FormNotaFiscal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(1264, 761);
+            Controls.Add(dateTimePicker_FiltroFinalDataEmissao);
             Controls.Add(label_FiltroCliente);
             Controls.Add(comboBox_FiltroCliente);
             Controls.Add(label_FiltroStatus);
             Controls.Add(comboBox_FiltroStatus);
             Controls.Add(label_FiltroDataEmissao);
-            Controls.Add(dateTimePicker_FiltroDataEmissao);
+            Controls.Add(dateTimePicker_FiltroInicioDataEmissao);
             Controls.Add(button_Filtrar);
             Controls.Add(button_RemoverFiltros);
             Controls.Add(dataGridView_Notas);
@@ -381,7 +391,7 @@
         private Label label_FiltroDataEmissao;
         private Label label_FiltroStatus;
         private ComboBox comboBox_FiltroStatus;
-        private DateTimePicker dateTimePicker_FiltroDataEmissao;
+        private DateTimePicker dateTimePicker_FiltroInicioDataEmissao;
         private Label label_FiltroCliente;
         private ComboBox comboBox_FiltroCliente;
         private DataGridView dataGridView_Notas;
@@ -405,5 +415,6 @@
         private DataGridViewTextBoxColumn Column_ItemQuantidade;
         private DataGridViewTextBoxColumn Column_ItemValorTotal;
         private Button button_CancelarNota;
+        private DateTimePicker dateTimePicker_FiltroFinalDataEmissao;
     }
 }

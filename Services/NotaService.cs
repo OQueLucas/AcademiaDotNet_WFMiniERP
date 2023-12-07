@@ -29,16 +29,29 @@ namespace AcademiaDotNet_WFMiniERP.Services
             return await _contexto.Notas.ToListAsync();
         }
 
-        public async Task<IList<Nota>> FindAllAsyncQuery()
+        public async Task<IList<Nota>> FindAllAsyncQuery(int ClienteID, string? status, DateTime? dataInicio, DateTime? dataFinal)
         {
             var query = await _contexto.Notas
-                .Join(_contexto.ItemNota, nota => nota.ID, item => item.ID, (nota, item) => new { nota, item })
-                .Select(x => new Nota
-                {
-
-                }).ToListAsync();
+            .Where(nota =>
+                (ClienteID == 0 ? true : nota.ClienteID == ClienteID) &&
+                (status == null ? true : (int)nota.Status == int.Parse(status)) &&
+                (dataInicio == null ? true : nota.DataEmissao >= dataInicio) &&
+                (dataFinal == null ? true : nota.DataEmissao <= dataFinal)
+                )
+            .ToListAsync();
             return query;
         }
+
+        //public async Task<IList<Nota>> FindAllAsyncQuery()
+        //{
+        //    var query = await _contexto.Notas
+        //        .Join(_contexto.ItemNota, nota => nota.ID, item => item.ID, (nota, item) => new { nota, item })
+        //        .Select(x => new Nota
+        //        {
+
+        //        }).ToListAsync();
+        //    return query;
+        //}
 
         public async Task<Nota> FindByIDAsync(int id)
         {
@@ -63,17 +76,6 @@ namespace AcademiaDotNet_WFMiniERP.Services
             {
                 MessageBox.Show(ex.Message);
             }
-        }
-
-        public async Task<IList<Nota>> FindAllAsync(DateOnly? data, StatusNota? status, int ClienteID)
-        {
-            var query = await _contexto.Notas
-            .Where(nota =>
-                (status == null ? true : nota.Status == status.Value) &&
-                (data == null ? true : DateOnly.FromDateTime(nota.DataEmissao) == data) &&
-                (ClienteID == 0 ? true : nota.ClienteID == ClienteID))
-            .ToListAsync();
-            return query;
         }
     }
 }

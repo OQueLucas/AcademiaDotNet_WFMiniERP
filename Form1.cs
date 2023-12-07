@@ -1,7 +1,6 @@
 using AcademiaDotNet_WFMiniERP.DataModels;
 using AcademiaDotNet_WFMiniERP.DataModels.Enum;
 using AcademiaDotNet_WFMiniERP.Services;
-using System.Data;
 
 namespace AcademiaDotNet_WFMiniERP
 {

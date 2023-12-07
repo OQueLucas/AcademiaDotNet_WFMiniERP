@@ -16,6 +16,7 @@ namespace AcademiaDotNet_WFMiniERP
             BuscaNotas();
             FiltroClientes();
             FiltroStatus();
+            NotaMensal();
         }
 
         private async void FiltroClientes()
@@ -130,13 +131,29 @@ namespace AcademiaDotNet_WFMiniERP
                 }
             }
 
+            string statusID;
+
+            CBItem? statusSelecionado = comboBox_FiltroStatus.SelectedItem as CBItem;
+
+            if (statusSelecionado != null)
+            {
+                statusID = statusSelecionado.ID.ToString();
+            }
+            else
+            {
+                statusID = null;
+            }
+
+            DateTime dataInicio = dateTimePicker_FiltroInicioDataEmissao.Value;
+            DateTime dataFinal = dateTimePicker_FiltroFinalDataEmissao.Value;
+
             dataGridView_Notas.Rows.Clear();
 
-            var notas = await _notaServices.FindAllAsync(null, null, clienteID);
+            var notas = await _notaServices.FindAllAsyncQuery(clienteID, statusID, dataInicio, dataFinal);
 
             if (notas.Count == 0)
             {
-                MessageBox.Show("Não há notas desse cliente!");
+                MessageBox.Show("Não há notas nessas condições!");
                 return;
             }
 
@@ -151,6 +168,14 @@ namespace AcademiaDotNet_WFMiniERP
             BuscaNotas();
             comboBox_FiltroCliente.SelectedIndex = 0;
             comboBox_FiltroStatus.SelectedIndex = 0;
+        }
+
+        public void NotaMensal()
+        {
+            DateTime hoje = DateTime.Today;
+            DateTime inicio = new (hoje.Year, hoje.Month, 1);
+            dateTimePicker_FiltroInicioDataEmissao.Value =  inicio;
+            dateTimePicker_FiltroFinalDataEmissao.Value = inicio.AddMonths(1).AddSeconds(-1);
         }
     }
 }
