@@ -73,6 +73,7 @@
             button_RemoverFiltros.TextAlign = ContentAlignment.MiddleRight;
             button_RemoverFiltros.TextImageRelation = TextImageRelation.ImageBeforeText;
             button_RemoverFiltros.UseVisualStyleBackColor = true;
+            button_RemoverFiltros.Click += button_RemoverFiltros_Click;
             // 
             // button_Filtrar
             // 
@@ -85,6 +86,7 @@
             button_Filtrar.TextAlign = ContentAlignment.MiddleRight;
             button_Filtrar.TextImageRelation = TextImageRelation.ImageBeforeText;
             button_Filtrar.UseVisualStyleBackColor = true;
+            button_Filtrar.Click += button_Filtrar_Click;
             // 
             // label_FiltroDataEmissao
             // 

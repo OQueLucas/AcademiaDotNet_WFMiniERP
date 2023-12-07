@@ -64,5 +64,16 @@ namespace AcademiaDotNet_WFMiniERP.Services
                 MessageBox.Show(ex.Message);
             }
         }
+
+        public async Task<IList<Nota>> FindAllAsync(DateOnly? data, StatusNota? status, int ClienteID)
+        {
+            var query = await _contexto.Notas
+            .Where(nota =>
+                (status == null ? true : nota.Status == status.Value) &&
+                (data == null ? true : DateOnly.FromDateTime(nota.DataEmissao) == data) &&
+                (ClienteID == 0 ? true : nota.ClienteID == ClienteID))
+            .ToListAsync();
+            return query;
+        }
     }
 }

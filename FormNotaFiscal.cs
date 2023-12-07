@@ -35,6 +35,7 @@ namespace AcademiaDotNet_WFMiniERP
                 };
                 comboBox_FiltroCliente.Items.Add(item);
             }
+
         }
 
         private async void FiltroStatus()
@@ -56,6 +57,7 @@ namespace AcademiaDotNet_WFMiniERP
 
         private async Task BuscaNotas()
         {
+            dataGridView_Notas.Rows.Clear();
             var notas = await _notaServices.FindAllAsync();
             dataGridView_Notas.AutoGenerateColumns = false;
 
@@ -107,6 +109,48 @@ namespace AcademiaDotNet_WFMiniERP
             nota.Status = StatusNota.Cancelada;
 
             _notaServices.UpdateAsync(nota);
+        }
+
+        private async void button_Filtrar_Click(object sender, EventArgs e)
+        {
+            int clienteID = 0;
+
+            CBItem? clienteSelecionado = comboBox_FiltroCliente.SelectedItem as CBItem;
+
+            if (clienteSelecionado != null)
+            {
+                clienteID = clienteSelecionado.ID;
+
+                Cliente cliente = await _clienteService.FindByIDAsync(clienteID);
+
+                if (cliente == null)
+                {
+                    MessageBox.Show("Cliente não encontrado!");
+                    return;
+                }
+            }
+
+            dataGridView_Notas.Rows.Clear();
+
+            var notas = await _notaServices.FindAllAsync(null, null, clienteID);
+
+            if (notas.Count == 0)
+            {
+                MessageBox.Show("Não há notas desse cliente!");
+                return;
+            }
+
+            foreach (Nota nota in notas)
+            {
+                dataGridView_Notas.Rows.Add(new string[] { nota.ID.ToString(), nota.DataEmissao.ToString(), nota.Status.ToString(), nota.Cliente.Nome });
+            }
+        }
+
+        private void button_RemoverFiltros_Click(object sender, EventArgs e)
+        {
+            BuscaNotas();
+            comboBox_FiltroCliente.SelectedIndex = 0;
+            comboBox_FiltroStatus.SelectedIndex = 0;
         }
     }
 }
