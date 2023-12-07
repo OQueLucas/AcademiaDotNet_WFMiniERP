@@ -1,5 +1,6 @@
 ﻿using AcademiaDotNet_WFMiniERP.Data;
 using AcademiaDotNet_WFMiniERP.DataModels;
+using AcademiaDotNet_WFMiniERP.DataModels.Enum;
 using Microsoft.EntityFrameworkCore;
 
 namespace AcademiaDotNet_WFMiniERP.Services
@@ -34,7 +35,7 @@ namespace AcademiaDotNet_WFMiniERP.Services
                 .Join(_contexto.ItemNota, nota => nota.ID, item => item.ID, (nota, item) => new { nota, item })
                 .Select(x => new Nota
                 {
-                    
+
                 }).ToListAsync();
             return query;
         }
@@ -42,6 +43,26 @@ namespace AcademiaDotNet_WFMiniERP.Services
         public async Task<Nota> FindByIDAsync(int id)
         {
             return await _contexto.Notas.FindAsync(id);
+        }
+
+        public async Task UpdateAsync(Nota nota)
+        {
+            bool existe = await _contexto.Notas.AnyAsync(x => x.ID == nota.ID);
+            if (!existe)
+            {
+                MessageBox.Show("Id not found!");
+                return;
+            }
+
+            try
+            {
+                _contexto.Update(nota);
+                await _contexto.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

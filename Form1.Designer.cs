@@ -41,13 +41,13 @@
             numericUpDown_Quantidade = new NumericUpDown();
             label_Produto = new Label();
             dataGridView_Itens = new DataGridView();
+            button_Adicionar = new Button();
             Column_ID = new DataGridViewTextBoxColumn();
+            Column_ProdutoID = new DataGridViewTextBoxColumn();
             Column_Nome = new DataGridViewTextBoxColumn();
             Column_Preco = new DataGridViewTextBoxColumn();
             Column_Quantidade = new DataGridViewTextBoxColumn();
             Column_ValorTotal = new DataGridViewTextBoxColumn();
-            Column_ProdutoID = new DataGridViewTextBoxColumn();
-            button_Adicionar = new Button();
             groupBox_Cadastro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDown_Quantidade).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView_Itens).BeginInit();
@@ -202,12 +202,25 @@
             dataGridView_Itens.AllowUserToAddRows = false;
             dataGridView_Itens.BackgroundColor = SystemColors.ControlLight;
             dataGridView_Itens.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView_Itens.Columns.AddRange(new DataGridViewColumn[] { Column_ID, Column_Nome, Column_Preco, Column_Quantidade, Column_ValorTotal, Column_ProdutoID });
+            dataGridView_Itens.Columns.AddRange(new DataGridViewColumn[] { Column_ID, Column_ProdutoID, Column_Nome, Column_Preco, Column_Quantidade, Column_ValorTotal });
             dataGridView_Itens.Location = new Point(11, 64);
             dataGridView_Itens.Name = "dataGridView_Itens";
             dataGridView_Itens.RowTemplate.Height = 25;
             dataGridView_Itens.Size = new Size(1025, 636);
             dataGridView_Itens.TabIndex = 25;
+            // 
+            // button_Adicionar
+            // 
+            button_Adicionar.Image = Properties.Resources.add_shopping_cart_black;
+            button_Adicionar.Location = new Point(761, 14);
+            button_Adicionar.Name = "button_Adicionar";
+            button_Adicionar.Size = new Size(115, 40);
+            button_Adicionar.TabIndex = 36;
+            button_Adicionar.Text = "Adicionar";
+            button_Adicionar.TextAlign = ContentAlignment.MiddleRight;
+            button_Adicionar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button_Adicionar.UseVisualStyleBackColor = true;
+            button_Adicionar.Click += button_Adicionar_Click;
             // 
             // Column_ID
             // 
@@ -215,6 +228,11 @@
             Column_ID.HeaderText = "ID";
             Column_ID.Name = "Column_ID";
             Column_ID.Visible = false;
+            // 
+            // Column_ProdutoID
+            // 
+            Column_ProdutoID.HeaderText = "ProdutoID";
+            Column_ProdutoID.Name = "Column_ProdutoID";
             // 
             // Column_Nome
             // 
@@ -238,24 +256,6 @@
             // 
             Column_ValorTotal.HeaderText = "Valor Total";
             Column_ValorTotal.Name = "Column_ValorTotal";
-            // 
-            // Column_ProdutoID
-            // 
-            Column_ProdutoID.HeaderText = "ProdutoID";
-            Column_ProdutoID.Name = "Column_ProdutoID";
-            // 
-            // button_Adicionar
-            // 
-            button_Adicionar.Image = Properties.Resources.add_shopping_cart_black;
-            button_Adicionar.Location = new Point(761, 14);
-            button_Adicionar.Name = "button_Adicionar";
-            button_Adicionar.Size = new Size(115, 40);
-            button_Adicionar.TabIndex = 36;
-            button_Adicionar.Text = "Adicionar";
-            button_Adicionar.TextAlign = ContentAlignment.MiddleRight;
-            button_Adicionar.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button_Adicionar.UseVisualStyleBackColor = true;
-            button_Adicionar.Click += button_Adicionar_Click;
             // 
             // Form1
             // 
@@ -300,10 +300,10 @@
         private DataGridView dataGridView_Itens;
         private Button button_Adicionar;
         private DataGridViewTextBoxColumn Column_ID;
+        private DataGridViewTextBoxColumn Column_ProdutoID;
         private DataGridViewTextBoxColumn Column_Nome;
         private DataGridViewTextBoxColumn Column_Preco;
         private DataGridViewTextBoxColumn Column_Quantidade;
         private DataGridViewTextBoxColumn Column_ValorTotal;
-        private DataGridViewTextBoxColumn Column_ProdutoID;
     }
 }

@@ -7,15 +7,52 @@ namespace AcademiaDotNet_WFMiniERP
 {
     public partial class FormNotaFiscal : Form
     {
+        private readonly ClienteService _clienteService = new();
         private readonly NotaService _notaServices = new();
         public FormNotaFiscal()
         {
             InitializeComponent();
             CenterToParent();
             BuscaNotas();
+            FiltroClientes();
+            FiltroStatus();
         }
 
+        private async void FiltroClientes()
+        {
+            comboBox_FiltroCliente.Items.Clear();
+            comboBox_FiltroCliente.Items.Insert(0, "Selecione um cliente: ");
+            comboBox_FiltroCliente.SelectedIndex = 0;
 
+            var clientes = await _clienteService.FindAllAsync();
+
+            foreach (Cliente cliente in clientes)
+            {
+                CBItem item = new()
+                {
+                    ID = cliente.ID,
+                    Name = $"({cliente.ID}) {cliente.Nome}"
+                };
+                comboBox_FiltroCliente.Items.Add(item);
+            }
+        }
+
+        private async void FiltroStatus()
+        {
+            comboBox_FiltroStatus.Items.Clear();
+            comboBox_FiltroStatus.Items.Insert(0, "Selecione um status: ");
+            comboBox_FiltroStatus.SelectedIndex = 0;
+
+            foreach (var status in Enum.GetValues(typeof(StatusNota)))
+            {
+                CBItem item = new()
+                {
+                    ID = (int)status,
+                    Name = status.ToString(),
+                };
+                comboBox_FiltroStatus.Items.Add(item);
+            }
+        }
 
         private async Task BuscaNotas()
         {
@@ -54,6 +91,22 @@ namespace AcademiaDotNet_WFMiniERP
             comboBox_Status.DataSource = Enum.GetNames(typeof(StatusNota));
 
             comboBox_Status.SelectedItem = nota.Status.ToString();
+        }
+
+        private async void button_CancelarNota_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(dataGridView_Notas.CurrentRow.Cells["Column_ID"].Value.ToString());
+            var nota = await _notaServices.FindByIDAsync(id);
+
+            if (nota == null)
+            {
+                MessageBox.Show("Nota não encontrada");
+                return;
+            }
+
+            nota.Status = StatusNota.Cancelada;
+
+            _notaServices.UpdateAsync(nota);
         }
     }
 }

@@ -55,7 +55,7 @@ namespace AcademiaDotNet_WFMiniERP
                 CBItem item = new()
                 {
                     ID = produto.ID,
-                    Name = produto.Nome
+                    Name = $"({produto.ID}) {produto.Nome}"
                 };
                 comboBox_Produtos.Items.Add(item);
             }
@@ -108,7 +108,7 @@ namespace AcademiaDotNet_WFMiniERP
                 ProdutoID = produtoID
             };
 
-            dataGridView_Itens.Rows.Add(new string[] { dataGridView_Itens.RowCount.ToString(), item.Nome, item.Preco.ToString(), item.Quantidade.ToString(), item.ValorTotal.ToString(), item.ProdutoID.ToString() });
+            dataGridView_Itens.Rows.Add(new string[] { dataGridView_Itens.RowCount.ToString(), item.ProdutoID.ToString(), item.Nome, item.Preco.ToString(), item.Quantidade.ToString(), item.ValorTotal.ToString() });
         }
 
         private async void button_EmitirNota_Click(object sender, EventArgs e)

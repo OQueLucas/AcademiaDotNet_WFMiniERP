@@ -112,7 +112,7 @@
             comboBox_FiltroStatus.Location = new Point(99, 39);
             comboBox_FiltroStatus.Margin = new Padding(5);
             comboBox_FiltroStatus.Name = "comboBox_FiltroStatus";
-            comboBox_FiltroStatus.Size = new Size(102, 23);
+            comboBox_FiltroStatus.Size = new Size(154, 23);
             comboBox_FiltroStatus.TabIndex = 12;
             // 
             // dateTimePicker_FiltroDataEmissao
@@ -139,7 +139,7 @@
             comboBox_FiltroCliente.Location = new Point(99, 6);
             comboBox_FiltroCliente.Margin = new Padding(5);
             comboBox_FiltroCliente.Name = "comboBox_FiltroCliente";
-            comboBox_FiltroCliente.Size = new Size(102, 23);
+            comboBox_FiltroCliente.Size = new Size(154, 23);
             comboBox_FiltroCliente.TabIndex = 9;
             // 
             // dataGridView_Notas
@@ -219,6 +219,7 @@
             button_CancelarNota.Text = "Cancelar Nota";
             button_CancelarNota.TextImageRelation = TextImageRelation.ImageBeforeText;
             button_CancelarNota.UseVisualStyleBackColor = true;
+            button_CancelarNota.Click += button_CancelarNota_Click;
             // 
             // label_Cliente
             // 
