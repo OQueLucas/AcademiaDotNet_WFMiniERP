@@ -45,6 +45,7 @@
             Column_ID = new DataGridViewTextBoxColumn();
             Column_Nome = new DataGridViewTextBoxColumn();
             Column_Preco = new DataGridViewTextBoxColumn();
+            Column_FornecedorRazaoSocial = new DataGridViewTextBoxColumn();
             Column_FornecedorID = new DataGridViewTextBoxColumn();
             Column_Excluir = new DataGridViewButtonColumn();
             groupBox_Cadastro.SuspendLayout();
@@ -198,13 +199,14 @@
             dataGridView_Produtos.AllowUserToAddRows = false;
             dataGridView_Produtos.BackgroundColor = SystemColors.ControlLight;
             dataGridView_Produtos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView_Produtos.Columns.AddRange(new DataGridViewColumn[] { Column_ID, Column_Nome, Column_Preco, Column_FornecedorID, Column_Excluir });
+            dataGridView_Produtos.Columns.AddRange(new DataGridViewColumn[] { Column_ID, Column_Nome, Column_Preco, Column_FornecedorRazaoSocial, Column_FornecedorID, Column_Excluir });
             dataGridView_Produtos.Location = new Point(12, 87);
             dataGridView_Produtos.Name = "dataGridView_Produtos";
             dataGridView_Produtos.RowTemplate.Height = 25;
             dataGridView_Produtos.Size = new Size(917, 666);
             dataGridView_Produtos.TabIndex = 20;
             dataGridView_Produtos.CellClick += dataGridView_Produtos_CellClick;
+            dataGridView_Produtos.RowLeave += dataGridView_Produtos_RowLeave;
             // 
             // Column_ID
             // 
@@ -227,11 +229,19 @@
             Column_Preco.HeaderText = "Preço";
             Column_Preco.Name = "Column_Preco";
             // 
+            // Column_FornecedorRazaoSocial
+            // 
+            Column_FornecedorRazaoSocial.DataPropertyName = "FornecedorRazaoSocial";
+            Column_FornecedorRazaoSocial.HeaderText = "Fornecedor";
+            Column_FornecedorRazaoSocial.Name = "Column_FornecedorRazaoSocial";
+            Column_FornecedorRazaoSocial.ReadOnly = true;
+            // 
             // Column_FornecedorID
             // 
             Column_FornecedorID.DataPropertyName = "FornecedorID";
-            Column_FornecedorID.HeaderText = "Fornecedor";
+            Column_FornecedorID.HeaderText = "FornecedorID";
             Column_FornecedorID.Name = "Column_FornecedorID";
+            Column_FornecedorID.Visible = false;
             // 
             // Column_Excluir
             // 
@@ -282,5 +292,6 @@
         private DataGridViewTextBoxColumn Column_Preco;
         private DataGridViewTextBoxColumn Column_FornecedorID;
         private DataGridViewButtonColumn Column_Excluir;
+        private DataGridViewTextBoxColumn Column_FornecedorRazaoSocial;
     }
 }

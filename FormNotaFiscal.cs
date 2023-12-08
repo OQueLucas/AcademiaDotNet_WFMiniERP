@@ -212,7 +212,7 @@ namespace AcademiaDotNet_WFMiniERP
             }
 
 
-            var arquivo = @"C:\dados\nota-fiscal-"+ _nota.ID + "-ID" + DateTime.UtcNow.Ticks +".pdf";
+            var arquivo = @"C:\dados\nota-fiscal-" + _nota.ID + "-ID" + DateTime.UtcNow.Ticks + ".pdf";
 
             using (PdfWriter wpdf = new PdfWriter(arquivo, new WriterProperties().SetPdfVersion(PdfVersion.PDF_2_0)))
             {
@@ -248,14 +248,13 @@ namespace AcademiaDotNet_WFMiniERP
                     table.AddCell($"{item.ValorTotal}");
                 }
 
-
                 document.Add(table);
 
                 document.Close();
                 pdfDocument.Close();
-
-                MessageBox.Show("Arquivo PDF gerado em " + arquivo);
             }
+
+            MessageBox.Show("Arquivo PDF gerado em " + arquivo);
         }
     }
 }

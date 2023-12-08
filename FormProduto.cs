@@ -54,6 +54,7 @@ namespace AcademiaDotNet_WFMiniERP
             int id = int.Parse(dataGridView_Produtos.Rows[e.RowIndex].Cells["Column_ID"].Value.ToString());
             Excluir(id);
         }
+
         private async Task<bool> Excluir(int id)
         {
             bool excluido = await _produtoService.RemoveAsync(id);
@@ -109,12 +110,45 @@ namespace AcademiaDotNet_WFMiniERP
         {
             dataGridView_Produtos.Rows.Clear();
 
-            var produtos = await _produtoService.FindAllAsync();
+            var produtos = await _produtoService.FindAllAsyncQuery();
             dataGridView_Produtos.AutoGenerateColumns = false;
 
             foreach (Produto produto in produtos)
             {
-                dataGridView_Produtos.Rows.Add(new string[] { produto.ID.ToString(), produto.Nome, produto.Preco.ToString(), produto.Fornecedor.RazaoSocial });
+                dataGridView_Produtos.Rows.Add(new string[] { produto.ID.ToString(), produto.Nome, produto.Preco.ToString(), produto.Fornecedor.RazaoSocial, produto.Fornecedor.ID.ToString() });
+            }
+        }
+
+        private async void dataGridView_Produtos_RowLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            int linha = dataGridView_Produtos.CurrentRow.Index;
+            bool linhaAtualizada = false;
+
+            Produto produtoAtualizado = new()
+            {
+                ID = int.Parse(dataGridView_Produtos.Rows[linha].Cells["Column_ID"].Value.ToString()),
+                Nome = dataGridView_Produtos.Rows[linha].Cells["Column_Nome"].EditedFormattedValue.ToString(),
+                Preco = double.Parse(dataGridView_Produtos.Rows[linha].Cells["Column_Preco"].EditedFormattedValue.ToString()),
+                FornecedorID = int.Parse(dataGridView_Produtos.Rows[linha].Cells["Column_FornecedorID"].Value.ToString()),
+            };
+
+            foreach(DataGridViewColumn item in dataGridView_Produtos.Columns)
+            {
+                if (dataGridView_Produtos.Rows[linha].Cells[item.Index].Value != dataGridView_Produtos.Rows[linha].Cells[item.Index].EditedFormattedValue)
+                {
+                    linhaAtualizada = true;
+                    break;
+                }
+            }
+
+            if (!linhaAtualizada)
+                return;
+
+            bool atualizado = await _produtoService.UpdateAsync(produtoAtualizado);
+
+            if (atualizado)
+            {
+                MessageBox.Show("Produto atualizado!");
             }
         }
     }
