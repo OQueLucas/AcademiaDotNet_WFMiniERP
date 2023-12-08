@@ -19,6 +19,7 @@ namespace AcademiaDotNet_WFMiniERP
         {
             Cadastrar();
         }
+
         private void button_LimparCampos_Click(object sender, EventArgs e)
         {
             LimparCampos();

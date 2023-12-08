@@ -151,7 +151,7 @@ namespace AcademiaDotNet_WFMiniERP
                 ItemNota item = new()
                 {
                     Nome = dataGridView_Itens.Rows[i].Cells["Column_Nome"].Value.ToString(),
-                    Preco = float.Parse(dataGridView_Itens.Rows[i].Cells["Column_Preco"].Value.ToString()),
+                    Preco = decimal.Parse(dataGridView_Itens.Rows[i].Cells["Column_Preco"].Value.ToString()),
                     Quantidade = int.Parse(dataGridView_Itens.Rows[i].Cells["Column_Quantidade"].Value.ToString()),
                     ProdutoID = int.Parse(dataGridView_Itens.Rows[i].Cells["Column_ProdutoID"].Value.ToString()),
                     Nota = nota

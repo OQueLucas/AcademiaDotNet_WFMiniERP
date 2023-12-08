@@ -1,12 +1,16 @@
-﻿namespace AcademiaDotNet_WFMiniERP.DataModels
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace AcademiaDotNet_WFMiniERP.DataModels
 {
     public class ItemNota
     {
         public int ID { get; set; }
         public string Nome { get ; set; }
-        public double Preco { get; set; }
+        [Column(TypeName = "decimal(8,2)")]
+        public decimal Preco { get; set; }
         public int Quantidade { get; set; }
-        public double ValorTotal { get { return Preco * Quantidade; } set { value = Preco * Quantidade; } }
+        [Column(TypeName = "decimal(10,2)")]
+        public decimal ValorTotal { get { return Preco * Quantidade; } set { value = Preco * Quantidade; } }
         public virtual Nota Nota { get; set; }
         public int ProdutoID { get; set; }
         public virtual Produto Produto { get; set; }

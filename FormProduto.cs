@@ -92,7 +92,7 @@ namespace AcademiaDotNet_WFMiniERP
             Produto produto = new()
             {
                 Nome = textBox_Nome.Text,
-                Preco = double.Parse(textBox_Preco.Text),
+                Preco = decimal.Parse(textBox_Preco.Text),
                 FornecedorID = (comboBox_Fornecedor.SelectedItem as CBItem).ID
             };
 
@@ -128,7 +128,7 @@ namespace AcademiaDotNet_WFMiniERP
             {
                 ID = int.Parse(dataGridView_Produtos.Rows[linha].Cells["Column_ID"].Value.ToString()),
                 Nome = dataGridView_Produtos.Rows[linha].Cells["Column_Nome"].EditedFormattedValue.ToString(),
-                Preco = double.Parse(dataGridView_Produtos.Rows[linha].Cells["Column_Preco"].EditedFormattedValue.ToString()),
+                Preco = decimal.Parse(dataGridView_Produtos.Rows[linha].Cells["Column_Preco"].EditedFormattedValue.ToString()),
                 FornecedorID = int.Parse(dataGridView_Produtos.Rows[linha].Cells["Column_FornecedorID"].Value.ToString()),
             };
 
