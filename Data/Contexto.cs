@@ -13,6 +13,7 @@ namespace AcademiaDotNet_WFMiniERP.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            optionsBuilder.EnableSensitiveDataLogging();
             optionsBuilder.UseSqlServer("Data Source=localhost; Initial Catalog=miniERPEF; User ID=aulaentity; password=senha1234; language=Portuguese; Trusted_Connection=True; TrustServerCertificate=True;");
 
             optionsBuilder.UseLazyLoadingProxies();

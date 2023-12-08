@@ -44,15 +44,13 @@ namespace AcademiaDotNet_WFMiniERP
             }
         }
 
-
         private void dataGridView_Produtos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            bool excluirClick = e.ColumnIndex == dataGridView_Produtos.Rows[e.RowIndex].Cells["Column_Excluir"].ColumnIndex;
-
-            if (!excluirClick) return;
-
-            int id = int.Parse(dataGridView_Produtos.Rows[e.RowIndex].Cells["Column_ID"].Value.ToString());
-            Excluir(id);
+            if (e.ColumnIndex == dataGridView_Produtos.Columns["Column_Excluir"].Index && e.RowIndex >= 0)
+            {
+                int id = int.Parse(dataGridView_Produtos.Rows[e.RowIndex].Cells["Column_ID"].Value.ToString());
+                Excluir(id);
+            }
         }
 
         private async Task<bool> Excluir(int id)

@@ -23,14 +23,40 @@ namespace AcademiaDotNet_WFMiniERP.Services
             }
         }
 
-        public async Task<List<Cliente>> FindAllAsync()
+        public async Task<IList<Cliente>> FindAllAsync()
         {
-            return await _contexto.Clientes.ToListAsync();
+            return await _contexto.Clientes.AsNoTrackingWithIdentityResolution().Include(cliente => cliente.Notas).ToListAsync();
         }
 
         public async Task<Cliente> FindByIDAsync(int id)
         {
             return await _contexto.Clientes.FindAsync(id);
+        }
+        public async Task<bool> UpdateAsync(Cliente cliente)
+        {
+            bool existe = await _contexto.Clientes.AnyAsync(x => x.ID == cliente.ID);
+            if (!existe)
+            {
+                MessageBox.Show("Id not found!");
+                return false;
+            }
+
+            try
+            {
+                _contexto.Update(cliente);
+                await _contexto.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+        }
+
+        public async Task<Cliente> FindByCPFAsync(string cpf)
+        {
+            return await _contexto.Clientes.FirstOrDefaultAsync(cliente => cliente.CPF == cpf);
         }
 
         public async Task<bool> RemoveAsync(int id)

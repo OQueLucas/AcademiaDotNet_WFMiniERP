@@ -46,6 +46,7 @@
             Column_Excluir = new DataGridViewButtonColumn();
             Column_Notas = new DataGridViewTextBoxColumn();
             button_Consultar = new Button();
+            label_Consulta = new Label();
             groupBox_Cadastro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView_Clientes).BeginInit();
             SuspendLayout();
@@ -153,9 +154,10 @@
             // textBox_Consultar
             // 
             textBox_Consultar.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            textBox_Consultar.Location = new Point(12, 12);
+            textBox_Consultar.Location = new Point(75, 22);
             textBox_Consultar.Name = "textBox_Consultar";
-            textBox_Consultar.Size = new Size(917, 23);
+            textBox_Consultar.PlaceholderText = "CPF";
+            textBox_Consultar.Size = new Size(734, 23);
             textBox_Consultar.TabIndex = 6;
             // 
             // dataGridView_Clientes
@@ -164,12 +166,13 @@
             dataGridView_Clientes.BackgroundColor = SystemColors.ControlLight;
             dataGridView_Clientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView_Clientes.Columns.AddRange(new DataGridViewColumn[] { Column_ID, Column_CPF, Column_Nome, Column_Email, Column_Excluir, Column_Notas });
-            dataGridView_Clientes.Location = new Point(12, 87);
+            dataGridView_Clientes.Location = new Point(12, 58);
             dataGridView_Clientes.Name = "dataGridView_Clientes";
             dataGridView_Clientes.RowTemplate.Height = 25;
-            dataGridView_Clientes.Size = new Size(917, 662);
+            dataGridView_Clientes.Size = new Size(917, 691);
             dataGridView_Clientes.TabIndex = 8;
             dataGridView_Clientes.CellClick += dataGridView_Clientes_CellClick;
+            dataGridView_Clientes.RowLeave += dataGridView_Clientes_RowLeave;
             // 
             // Column_ID
             // 
@@ -222,7 +225,7 @@
             // 
             button_Consultar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             button_Consultar.Image = Properties.Resources.search_black;
-            button_Consultar.Location = new Point(821, 41);
+            button_Consultar.Location = new Point(821, 12);
             button_Consultar.Name = "button_Consultar";
             button_Consultar.Size = new Size(108, 40);
             button_Consultar.TabIndex = 7;
@@ -230,6 +233,16 @@
             button_Consultar.TextAlign = ContentAlignment.MiddleRight;
             button_Consultar.TextImageRelation = TextImageRelation.ImageBeforeText;
             button_Consultar.UseVisualStyleBackColor = true;
+            button_Consultar.Click += button_Consultar_Click;
+            // 
+            // label_Consulta
+            // 
+            label_Consulta.AutoSize = true;
+            label_Consulta.Location = new Point(12, 25);
+            label_Consulta.Name = "label_Consulta";
+            label_Consulta.Size = new Size(57, 15);
+            label_Consulta.TabIndex = 8;
+            label_Consulta.Text = "Consulta:";
             // 
             // FormCliente
             // 
@@ -237,6 +250,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(1264, 761);
+            Controls.Add(label_Consulta);
             Controls.Add(textBox_Consultar);
             Controls.Add(button_Consultar);
             Controls.Add(dataGridView_Clientes);
@@ -270,5 +284,6 @@
         private DataGridViewTextBoxColumn Column_Email;
         private DataGridViewButtonColumn Column_Excluir;
         private DataGridViewTextBoxColumn Column_Notas;
+        private Label label_Consulta;
     }
 }
