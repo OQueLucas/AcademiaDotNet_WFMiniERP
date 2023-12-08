@@ -1,7 +1,11 @@
-﻿using AcademiaDotNet_WFMiniERP.Data;
-using AcademiaDotNet_WFMiniERP.DataModels;
+﻿using AcademiaDotNet_WFMiniERP.DataModels;
 using AcademiaDotNet_WFMiniERP.DataModels.Enum;
 using AcademiaDotNet_WFMiniERP.Services;
+using iText.Kernel.Geom;
+using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Layout.Element;
+using iText.Layout.Properties;
 
 namespace AcademiaDotNet_WFMiniERP
 {
@@ -9,6 +13,8 @@ namespace AcademiaDotNet_WFMiniERP
     {
         private readonly ClienteService _clienteService = new();
         private readonly NotaService _notaServices = new();
+        private Nota _nota;
+
         public FormNotaFiscal()
         {
             InitializeComponent();
@@ -80,48 +86,50 @@ namespace AcademiaDotNet_WFMiniERP
 
             int id = int.Parse(dataGridView_Notas.Rows[linha].Cells["Column_ID"].Value.ToString());
 
-            var nota = await _notaServices.FindByIDAsync(id);
+            _nota = await _notaServices.FindByIDAsync(id);
 
-            textBox_Cliente.Text = nota.Cliente.Nome;
-            maskedTextBox_CPF.Text = nota.Cliente.CPF;
-            maskedTextBox_DataEmissao.Text = nota.DataEmissao.ToString("dd/MM/yyyy HH:mm");
+            textBox_Cliente.Text = _nota.Cliente.Nome;
+            maskedTextBox_CPF.Text = _nota.Cliente.CPF;
+            maskedTextBox_DataEmissao.Text = _nota.DataEmissao.ToString("dd/MM/yyyy HH:mm");
 
-            foreach (ItemNota item in nota.itens)
+            foreach (ItemNota item in _nota.itens)
             {
                 dataGridView_ItensNota.Rows.Add(new string[] { item.ID.ToString(), item.Nome, item.Preco.ToString(), item.Quantidade.ToString(), item.ValorTotal.ToString() });
             }
 
             comboBox_Status.DataSource = Enum.GetNames(typeof(StatusNota));
 
-            comboBox_Status.SelectedItem = nota.Status.ToString();
+            comboBox_Status.SelectedItem = _nota.Status.ToString();
         }
 
         private async void button_CancelarNota_Click(object sender, EventArgs e)
         {
-            int id = int.Parse(dataGridView_Notas.CurrentRow.Cells["Column_ID"].Value.ToString());
-            var nota = await _notaServices.FindByIDAsync(id);
-
-            if (nota == null)
+            if (_nota == null)
             {
                 MessageBox.Show("Nota não encontrada");
                 return;
             }
 
-            if (nota.Status == StatusNota.Cancelada)
+            if (_nota.Status == StatusNota.Cancelada)
             {
                 MessageBox.Show("Nota já foi cancelada!");
                 return;
             }
 
-            DialogResult dialog = MessageBox.Show("Tem certeza que deseja excluir a nota?", "nota: " + nota.ID, MessageBoxButtons.YesNo);
-            if (dialog == DialogResult.No) {
+            DialogResult dialog = MessageBox.Show("Tem certeza que deseja excluir a nota?", "nota: " + _nota.ID, MessageBoxButtons.YesNo);
+            if (dialog == DialogResult.No)
+            {
                 return;
             }
 
-            nota.Status = StatusNota.Cancelada;
+            _nota.Status = StatusNota.Cancelada;
 
-            _notaServices.UpdateAsync(nota);
-            MessageBox.Show("Nota cancelada com sucesso!");
+            bool excluido = await _notaServices.UpdateAsync(_nota);
+
+            if (excluido)
+            {
+                MessageBox.Show("Nota cancelada com sucesso!");
+            }
         }
 
         private async void button_Filtrar_Click(object sender, EventArgs e)
@@ -185,9 +193,69 @@ namespace AcademiaDotNet_WFMiniERP
         public void NotaMensal()
         {
             DateTime hoje = DateTime.Today;
-            DateTime inicio = new (hoje.Year, hoje.Month, 1);
-            dateTimePicker_FiltroInicioDataEmissao.Value =  inicio;
+            DateTime inicio = new(hoje.Year, hoje.Month, 1);
+            dateTimePicker_FiltroInicioDataEmissao.Value = inicio;
             dateTimePicker_FiltroFinalDataEmissao.Value = inicio.AddMonths(1).AddSeconds(-1);
+        }
+
+        private void button_ImprimirNota_Click(object sender, EventArgs e)
+        {
+            GerarPDF();
+        }
+
+        public void GerarPDF()
+        {
+            if (_nota == null)
+            {
+                MessageBox.Show("Selecione uma nota");
+                return;
+            }
+
+
+            var arquivo = @"C:\dados\nota-fiscal-"+ _nota.ID + "-ID" + DateTime.UtcNow.Ticks +".pdf";
+
+            using (PdfWriter wpdf = new PdfWriter(arquivo, new WriterProperties().SetPdfVersion(PdfVersion.PDF_2_0)))
+            {
+                var pdfDocument = new PdfDocument(wpdf);
+
+                var document = new Document(pdfDocument, PageSize.A4);
+                document.Add(new Paragraph("MiniERP"));
+                document.Add(new Paragraph("Recibo: "));
+                document.Add(new Paragraph($"CPF: {_nota.Cliente.CPF}"));
+                document.Add(new Paragraph($"Status: {_nota.Status}"));
+                document.Add(new Paragraph($"Nome: {_nota.Cliente.Nome}"));
+                document.Add(new Paragraph($"Data de Emissão: {_nota.DataEmissao}"));
+                document.Add(new Paragraph($"Extrato Nº. : {_nota.ID}"));
+
+                float[] colunas = { 0.8F, 7, 1, 1, 2, 2 };
+
+                Table table = new Table(UnitValue.CreatePercentArray(colunas)).UseAllAvailableWidth();
+
+                table.AddCell("#");
+                table.AddCell("Nome");
+                table.AddCell("QTD");
+                table.AddCell("UN");
+                table.AddCell("Preço");
+                table.AddCell("Valor Total");
+
+                foreach (var item in _nota.itens)
+                {
+                    table.AddCell($"{item.ID}");
+                    table.AddCell($"{item.Nome}");
+                    table.AddCell($"{item.Quantidade}");
+                    table.AddCell($"UN");
+                    table.AddCell($"{item.Preco}");
+                    table.AddCell($"{item.ValorTotal}");
+                }
+
+
+                document.Add(table);
+
+                document.Close();
+                pdfDocument.Close();
+
+                MessageBox.Show("Arquivo PDF gerado em " + arquivo);
+            }
         }
     }
 }

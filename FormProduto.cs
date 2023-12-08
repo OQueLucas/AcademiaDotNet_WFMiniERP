@@ -109,7 +109,7 @@ namespace AcademiaDotNet_WFMiniERP
         {
             dataGridView_Produtos.Rows.Clear();
 
-            var produtos = await _produtoService.FindAllAsyncQuery();
+            var produtos = await _produtoService.FindAllAsync();
             dataGridView_Produtos.AutoGenerateColumns = false;
 
             foreach (Produto produto in produtos)

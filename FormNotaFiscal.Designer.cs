@@ -42,6 +42,7 @@
             Column_Status = new DataGridViewTextBoxColumn();
             Column_Cliente = new DataGridViewTextBoxColumn();
             groupBox_VisualizarNota = new GroupBox();
+            button_ImprimirNota = new Button();
             button_CancelarNota = new Button();
             label_Cliente = new Label();
             textBox_Cliente = new TextBox();
@@ -195,6 +196,7 @@
             // 
             // groupBox_VisualizarNota
             // 
+            groupBox_VisualizarNota.Controls.Add(button_ImprimirNota);
             groupBox_VisualizarNota.Controls.Add(button_CancelarNota);
             groupBox_VisualizarNota.Controls.Add(label_Cliente);
             groupBox_VisualizarNota.Controls.Add(textBox_Cliente);
@@ -212,10 +214,22 @@
             groupBox_VisualizarNota.TabStop = false;
             groupBox_VisualizarNota.Text = "Visualizar";
             // 
+            // button_ImprimirNota
+            // 
+            button_ImprimirNota.Image = Properties.Resources.billing_machine_black;
+            button_ImprimirNota.Location = new Point(433, 679);
+            button_ImprimirNota.Name = "button_ImprimirNota";
+            button_ImprimirNota.Size = new Size(91, 52);
+            button_ImprimirNota.TabIndex = 24;
+            button_ImprimirNota.Text = "Imprimir Nota";
+            button_ImprimirNota.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button_ImprimirNota.UseVisualStyleBackColor = true;
+            button_ImprimirNota.Click += button_ImprimirNota_Click;
+            // 
             // button_CancelarNota
             // 
             button_CancelarNota.Image = Properties.Resources.x_red;
-            button_CancelarNota.Location = new Point(433, 679);
+            button_CancelarNota.Location = new Point(297, 679);
             button_CancelarNota.Name = "button_CancelarNota";
             button_CancelarNota.Size = new Size(91, 52);
             button_CancelarNota.TabIndex = 23;
@@ -416,5 +430,6 @@
         private DataGridViewTextBoxColumn Column_ItemValorTotal;
         private Button button_CancelarNota;
         private DateTimePicker dateTimePicker_FiltroFinalDataEmissao;
+        private Button button_ImprimirNota;
     }
 }
