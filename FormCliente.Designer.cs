@@ -84,7 +84,7 @@
             maskedTextBox_CPF.Mask = "000,000,000-00";
             maskedTextBox_CPF.Name = "maskedTextBox_CPF";
             maskedTextBox_CPF.Size = new Size(233, 23);
-            maskedTextBox_CPF.TabIndex = 12;
+            maskedTextBox_CPF.TabIndex = 1;
             maskedTextBox_CPF.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             maskedTextBox_CPF.Enter += maskedTextBox_CPF_Enter;
             // 
@@ -103,7 +103,7 @@
             textBox_Nome.Location = new Point(6, 105);
             textBox_Nome.Name = "textBox_Nome";
             textBox_Nome.Size = new Size(233, 23);
-            textBox_Nome.TabIndex = 4;
+            textBox_Nome.TabIndex = 2;
             // 
             // label_Email
             // 
@@ -120,7 +120,7 @@
             textBox_Email.Location = new Point(6, 165);
             textBox_Email.Name = "textBox_Email";
             textBox_Email.Size = new Size(233, 23);
-            textBox_Email.TabIndex = 6;
+            textBox_Email.TabIndex = 3;
             // 
             // button_LimparCampos
             // 
@@ -129,7 +129,7 @@
             button_LimparCampos.Location = new Point(6, 209);
             button_LimparCampos.Name = "button_LimparCampos";
             button_LimparCampos.Size = new Size(100, 40);
-            button_LimparCampos.TabIndex = 10;
+            button_LimparCampos.TabIndex = 5;
             button_LimparCampos.Text = "Limpar Campos";
             button_LimparCampos.TextAlign = ContentAlignment.MiddleRight;
             button_LimparCampos.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -143,7 +143,7 @@
             button_Cadastrar.Location = new Point(123, 209);
             button_Cadastrar.Name = "button_Cadastrar";
             button_Cadastrar.Size = new Size(116, 40);
-            button_Cadastrar.TabIndex = 1;
+            button_Cadastrar.TabIndex = 4;
             button_Cadastrar.Text = "Cadastrar";
             button_Cadastrar.TextAlign = ContentAlignment.MiddleRight;
             button_Cadastrar.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -152,10 +152,11 @@
             // 
             // textBox_Consultar
             // 
+            textBox_Consultar.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             textBox_Consultar.Location = new Point(12, 12);
             textBox_Consultar.Name = "textBox_Consultar";
             textBox_Consultar.Size = new Size(917, 23);
-            textBox_Consultar.TabIndex = 10;
+            textBox_Consultar.TabIndex = 6;
             // 
             // dataGridView_Clientes
             // 
@@ -167,7 +168,7 @@
             dataGridView_Clientes.Name = "dataGridView_Clientes";
             dataGridView_Clientes.RowTemplate.Height = 25;
             dataGridView_Clientes.Size = new Size(917, 662);
-            dataGridView_Clientes.TabIndex = 9;
+            dataGridView_Clientes.TabIndex = 8;
             dataGridView_Clientes.CellClick += dataGridView_Clientes_CellClick;
             // 
             // Column_ID
@@ -224,7 +225,7 @@
             button_Consultar.Location = new Point(821, 41);
             button_Consultar.Name = "button_Consultar";
             button_Consultar.Size = new Size(108, 40);
-            button_Consultar.TabIndex = 13;
+            button_Consultar.TabIndex = 7;
             button_Consultar.Text = "Consultar";
             button_Consultar.TextAlign = ContentAlignment.MiddleRight;
             button_Consultar.TextImageRelation = TextImageRelation.ImageBeforeText;

@@ -51,7 +51,7 @@
             textBox_Consultar.Location = new Point(12, 12);
             textBox_Consultar.Name = "textBox_Consultar";
             textBox_Consultar.Size = new Size(917, 23);
-            textBox_Consultar.TabIndex = 7;
+            textBox_Consultar.TabIndex = 5;
             // 
             // groupBox_Cadastro
             // 
@@ -84,7 +84,7 @@
             button_LimparCampos.Location = new Point(6, 161);
             button_LimparCampos.Name = "button_LimparCampos";
             button_LimparCampos.Size = new Size(100, 40);
-            button_LimparCampos.TabIndex = 15;
+            button_LimparCampos.TabIndex = 4;
             button_LimparCampos.Text = "Limpar Campos";
             button_LimparCampos.TextAlign = ContentAlignment.MiddleRight;
             button_LimparCampos.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -99,7 +99,7 @@
             maskedTextBox_CNPJ.Mask = "00,000,000/0000-00";
             maskedTextBox_CNPJ.Name = "maskedTextBox_CNPJ";
             maskedTextBox_CNPJ.Size = new Size(233, 23);
-            maskedTextBox_CNPJ.TabIndex = 13;
+            maskedTextBox_CNPJ.TabIndex = 1;
             maskedTextBox_CNPJ.Enter += maskedTextBox_CNPJ_Enter;
             // 
             // button_Cadastrar
@@ -109,7 +109,7 @@
             button_Cadastrar.Location = new Point(123, 161);
             button_Cadastrar.Name = "button_Cadastrar";
             button_Cadastrar.Size = new Size(116, 40);
-            button_Cadastrar.TabIndex = 14;
+            button_Cadastrar.TabIndex = 3;
             button_Cadastrar.Text = "Cadastrar";
             button_Cadastrar.TextAlign = ContentAlignment.MiddleRight;
             button_Cadastrar.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -131,7 +131,7 @@
             textBox_RazaoSocial.Location = new Point(6, 105);
             textBox_RazaoSocial.Name = "textBox_RazaoSocial";
             textBox_RazaoSocial.Size = new Size(233, 23);
-            textBox_RazaoSocial.TabIndex = 4;
+            textBox_RazaoSocial.TabIndex = 2;
             // 
             // dataGridView_Fornecedores
             // 
@@ -143,7 +143,7 @@
             dataGridView_Fornecedores.Name = "dataGridView_Fornecedores";
             dataGridView_Fornecedores.RowTemplate.Height = 25;
             dataGridView_Fornecedores.Size = new Size(917, 666);
-            dataGridView_Fornecedores.TabIndex = 5;
+            dataGridView_Fornecedores.TabIndex = 7;
             dataGridView_Fornecedores.CellClick += dataGridView_Fornecedores_CellClick;
             // 
             // Column_ID
@@ -185,7 +185,7 @@
             button_Consultar.Location = new Point(821, 41);
             button_Consultar.Name = "button_Consultar";
             button_Consultar.Size = new Size(108, 40);
-            button_Consultar.TabIndex = 16;
+            button_Consultar.TabIndex = 6;
             button_Consultar.Text = "Consultar";
             button_Consultar.TextAlign = ContentAlignment.MiddleRight;
             button_Consultar.TextImageRelation = TextImageRelation.ImageBeforeText;

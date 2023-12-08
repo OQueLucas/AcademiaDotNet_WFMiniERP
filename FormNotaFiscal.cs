@@ -1,11 +1,6 @@
 ﻿using AcademiaDotNet_WFMiniERP.DataModels;
 using AcademiaDotNet_WFMiniERP.DataModels.Enum;
 using AcademiaDotNet_WFMiniERP.Services;
-using iText.Kernel.Geom;
-using iText.Kernel.Pdf;
-using iText.Layout;
-using iText.Layout.Element;
-using iText.Layout.Properties;
 
 namespace AcademiaDotNet_WFMiniERP
 {
@@ -200,61 +195,7 @@ namespace AcademiaDotNet_WFMiniERP
 
         private void button_ImprimirNota_Click(object sender, EventArgs e)
         {
-            GerarPDF();
-        }
-
-        public void GerarPDF()
-        {
-            if (_nota == null)
-            {
-                MessageBox.Show("Selecione uma nota");
-                return;
-            }
-
-
-            var arquivo = @"C:\dados\nota-fiscal-" + _nota.ID + "-ID" + DateTime.UtcNow.Ticks + ".pdf";
-
-            using (PdfWriter wpdf = new PdfWriter(arquivo, new WriterProperties().SetPdfVersion(PdfVersion.PDF_2_0)))
-            {
-                var pdfDocument = new PdfDocument(wpdf);
-
-                var document = new Document(pdfDocument, PageSize.A4);
-                document.Add(new Paragraph("MiniERP"));
-                document.Add(new Paragraph("Recibo: "));
-                document.Add(new Paragraph($"CPF: {_nota.Cliente.CPF}"));
-                document.Add(new Paragraph($"Status: {_nota.Status}"));
-                document.Add(new Paragraph($"Nome: {_nota.Cliente.Nome}"));
-                document.Add(new Paragraph($"Data de Emissão: {_nota.DataEmissao}"));
-                document.Add(new Paragraph($"Extrato Nº. : {_nota.ID}"));
-
-                float[] colunas = { 0.8F, 7, 1, 1, 2, 2 };
-
-                Table table = new Table(UnitValue.CreatePercentArray(colunas)).UseAllAvailableWidth();
-
-                table.AddCell("#");
-                table.AddCell("Nome");
-                table.AddCell("QTD");
-                table.AddCell("UN");
-                table.AddCell("Preço");
-                table.AddCell("Valor Total");
-
-                foreach (var item in _nota.itens)
-                {
-                    table.AddCell($"{item.ID}");
-                    table.AddCell($"{item.Nome}");
-                    table.AddCell($"{item.Quantidade}");
-                    table.AddCell($"UN");
-                    table.AddCell($"{item.Preco}");
-                    table.AddCell($"{item.ValorTotal}");
-                }
-
-                document.Add(table);
-
-                document.Close();
-                pdfDocument.Close();
-            }
-
-            MessageBox.Show("Arquivo PDF gerado em " + arquivo);
+            _nota.GerarPDF();
         }
     }
 }

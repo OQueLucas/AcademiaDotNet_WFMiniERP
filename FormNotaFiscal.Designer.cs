@@ -70,7 +70,7 @@
             button_RemoverFiltros.Location = new Point(579, 6);
             button_RemoverFiltros.Name = "button_RemoverFiltros";
             button_RemoverFiltros.Size = new Size(107, 40);
-            button_RemoverFiltros.TabIndex = 16;
+            button_RemoverFiltros.TabIndex = 7;
             button_RemoverFiltros.Text = "Remover Filtros";
             button_RemoverFiltros.TextAlign = ContentAlignment.MiddleRight;
             button_RemoverFiltros.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -83,7 +83,7 @@
             button_Filtrar.Location = new Point(599, 55);
             button_Filtrar.Name = "button_Filtrar";
             button_Filtrar.Size = new Size(87, 40);
-            button_Filtrar.TabIndex = 15;
+            button_Filtrar.TabIndex = 6;
             button_Filtrar.Text = "Filtrar";
             button_Filtrar.TextAlign = ContentAlignment.MiddleRight;
             button_Filtrar.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -117,7 +117,7 @@
             comboBox_FiltroStatus.Margin = new Padding(5);
             comboBox_FiltroStatus.Name = "comboBox_FiltroStatus";
             comboBox_FiltroStatus.Size = new Size(253, 23);
-            comboBox_FiltroStatus.TabIndex = 12;
+            comboBox_FiltroStatus.TabIndex = 3;
             // 
             // dateTimePicker_FiltroInicioDataEmissao
             // 
@@ -125,7 +125,7 @@
             dateTimePicker_FiltroInicioDataEmissao.Margin = new Padding(5);
             dateTimePicker_FiltroInicioDataEmissao.Name = "dateTimePicker_FiltroInicioDataEmissao";
             dateTimePicker_FiltroInicioDataEmissao.Size = new Size(253, 23);
-            dateTimePicker_FiltroInicioDataEmissao.TabIndex = 11;
+            dateTimePicker_FiltroInicioDataEmissao.TabIndex = 4;
             // 
             // label_FiltroCliente
             // 
@@ -144,7 +144,7 @@
             comboBox_FiltroCliente.Margin = new Padding(5);
             comboBox_FiltroCliente.Name = "comboBox_FiltroCliente";
             comboBox_FiltroCliente.Size = new Size(253, 23);
-            comboBox_FiltroCliente.TabIndex = 9;
+            comboBox_FiltroCliente.TabIndex = 2;
             // 
             // dataGridView_Notas
             // 
@@ -160,7 +160,7 @@
             dataGridView_Notas.RowTemplate.Height = 25;
             dataGridView_Notas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView_Notas.Size = new Size(674, 600);
-            dataGridView_Notas.TabIndex = 17;
+            dataGridView_Notas.TabIndex = 1;
             dataGridView_Notas.RowEnter += dataGridView_Notas_RowEnter;
             // 
             // Column_ID
@@ -369,7 +369,7 @@
             dateTimePicker_FiltroFinalDataEmissao.Margin = new Padding(5);
             dateTimePicker_FiltroFinalDataEmissao.Name = "dateTimePicker_FiltroFinalDataEmissao";
             dateTimePicker_FiltroFinalDataEmissao.Size = new Size(253, 23);
-            dateTimePicker_FiltroFinalDataEmissao.TabIndex = 19;
+            dateTimePicker_FiltroFinalDataEmissao.TabIndex = 5;
             // 
             // FormNotaFiscal
             // 

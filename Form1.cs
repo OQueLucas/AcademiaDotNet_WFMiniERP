@@ -166,6 +166,10 @@ namespace AcademiaDotNet_WFMiniERP
                 if (adicionado)
                 {
                     MessageBox.Show("Nota emitida com sucesso!");
+
+                    Nota novaNota = await _notaService.FindByIDAsync(nota.ID);
+                    nota.Cliente = await _clienteService.FindByIDAsync(nota.ClienteID);
+                    novaNota.GerarPDF();
                 }
             }
             catch (Exception ex)

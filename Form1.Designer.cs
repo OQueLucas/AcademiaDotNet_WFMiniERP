@@ -41,13 +41,13 @@
             numericUpDown_Quantidade = new NumericUpDown();
             label_Produto = new Label();
             dataGridView_Itens = new DataGridView();
-            button_Adicionar = new Button();
             Column_ID = new DataGridViewTextBoxColumn();
             Column_ProdutoID = new DataGridViewTextBoxColumn();
             Column_Nome = new DataGridViewTextBoxColumn();
             Column_Preco = new DataGridViewTextBoxColumn();
             Column_Quantidade = new DataGridViewTextBoxColumn();
             Column_ValorTotal = new DataGridViewTextBoxColumn();
+            button_Adicionar = new Button();
             groupBox_Cadastro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDown_Quantidade).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView_Itens).BeginInit();
@@ -59,7 +59,7 @@
             button_Notas.Location = new Point(1128, 617);
             button_Notas.Name = "button_Notas";
             button_Notas.Size = new Size(81, 83);
-            button_Notas.TabIndex = 35;
+            button_Notas.TabIndex = 11;
             button_Notas.Text = "Visualizar Notas";
             button_Notas.TextAlign = ContentAlignment.BottomCenter;
             button_Notas.TextImageRelation = TextImageRelation.ImageAboveText;
@@ -72,7 +72,7 @@
             button_EmitirNota.Location = new Point(915, 709);
             button_EmitirNota.Name = "button_EmitirNota";
             button_EmitirNota.Size = new Size(121, 40);
-            button_EmitirNota.TabIndex = 33;
+            button_EmitirNota.TabIndex = 7;
             button_EmitirNota.Text = "Emitir Nota";
             button_EmitirNota.TextAlign = ContentAlignment.MiddleRight;
             button_EmitirNota.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -87,7 +87,7 @@
             comboBox_Produtos.Location = new Point(333, 24);
             comboBox_Produtos.Name = "comboBox_Produtos";
             comboBox_Produtos.Size = new Size(299, 23);
-            comboBox_Produtos.TabIndex = 32;
+            comboBox_Produtos.TabIndex = 2;
             // 
             // button_AtualizarClientes
             // 
@@ -95,7 +95,7 @@
             button_AtualizarClientes.Location = new Point(894, 14);
             button_AtualizarClientes.Name = "button_AtualizarClientes";
             button_AtualizarClientes.Size = new Size(142, 40);
-            button_AtualizarClientes.TabIndex = 31;
+            button_AtualizarClientes.TabIndex = 5;
             button_AtualizarClientes.Text = "Atualizar Listas";
             button_AtualizarClientes.TextAlign = ContentAlignment.MiddleRight;
             button_AtualizarClientes.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -124,7 +124,7 @@
             button_Clientes.Margin = new Padding(10);
             button_Clientes.Name = "button_Clientes";
             button_Clientes.Size = new Size(125, 45);
-            button_Clientes.TabIndex = 12;
+            button_Clientes.TabIndex = 8;
             button_Clientes.Text = "Clientes";
             button_Clientes.TextAlign = ContentAlignment.MiddleRight;
             button_Clientes.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -139,7 +139,7 @@
             button_Fornecedores.Margin = new Padding(10);
             button_Fornecedores.Name = "button_Fornecedores";
             button_Fornecedores.Size = new Size(125, 45);
-            button_Fornecedores.TabIndex = 14;
+            button_Fornecedores.TabIndex = 9;
             button_Fornecedores.Text = "Fornecedores";
             button_Fornecedores.TextAlign = ContentAlignment.MiddleRight;
             button_Fornecedores.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -154,7 +154,7 @@
             button_Produtos.Margin = new Padding(10);
             button_Produtos.Name = "button_Produtos";
             button_Produtos.Size = new Size(125, 45);
-            button_Produtos.TabIndex = 13;
+            button_Produtos.TabIndex = 10;
             button_Produtos.Text = "Produtos";
             button_Produtos.TextAlign = ContentAlignment.MiddleRight;
             button_Produtos.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -169,7 +169,7 @@
             comboBox_Clientes.Location = new Point(81, 24);
             comboBox_Clientes.Name = "comboBox_Clientes";
             comboBox_Clientes.Size = new Size(176, 23);
-            comboBox_Clientes.TabIndex = 29;
+            comboBox_Clientes.TabIndex = 1;
             // 
             // label_Cliente
             // 
@@ -185,7 +185,7 @@
             numericUpDown_Quantidade.Location = new Point(638, 24);
             numericUpDown_Quantidade.Name = "numericUpDown_Quantidade";
             numericUpDown_Quantidade.Size = new Size(83, 23);
-            numericUpDown_Quantidade.TabIndex = 34;
+            numericUpDown_Quantidade.TabIndex = 3;
             numericUpDown_Quantidade.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // label_Produto
@@ -207,20 +207,7 @@
             dataGridView_Itens.Name = "dataGridView_Itens";
             dataGridView_Itens.RowTemplate.Height = 25;
             dataGridView_Itens.Size = new Size(1025, 636);
-            dataGridView_Itens.TabIndex = 25;
-            // 
-            // button_Adicionar
-            // 
-            button_Adicionar.Image = Properties.Resources.add_shopping_cart_black;
-            button_Adicionar.Location = new Point(761, 14);
-            button_Adicionar.Name = "button_Adicionar";
-            button_Adicionar.Size = new Size(115, 40);
-            button_Adicionar.TabIndex = 36;
-            button_Adicionar.Text = "Adicionar";
-            button_Adicionar.TextAlign = ContentAlignment.MiddleRight;
-            button_Adicionar.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button_Adicionar.UseVisualStyleBackColor = true;
-            button_Adicionar.Click += button_Adicionar_Click;
+            dataGridView_Itens.TabIndex = 6;
             // 
             // Column_ID
             // 
@@ -256,6 +243,19 @@
             // 
             Column_ValorTotal.HeaderText = "Valor Total";
             Column_ValorTotal.Name = "Column_ValorTotal";
+            // 
+            // button_Adicionar
+            // 
+            button_Adicionar.Image = Properties.Resources.add_shopping_cart_black;
+            button_Adicionar.Location = new Point(761, 14);
+            button_Adicionar.Name = "button_Adicionar";
+            button_Adicionar.Size = new Size(115, 40);
+            button_Adicionar.TabIndex = 4;
+            button_Adicionar.Text = "Adicionar";
+            button_Adicionar.TextAlign = ContentAlignment.MiddleRight;
+            button_Adicionar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button_Adicionar.UseVisualStyleBackColor = true;
+            button_Adicionar.Click += button_Adicionar_Click;
             // 
             // Form1
             // 

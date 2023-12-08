@@ -58,7 +58,7 @@
             textBox_Consultar.Location = new Point(12, 12);
             textBox_Consultar.Name = "textBox_Consultar";
             textBox_Consultar.Size = new Size(917, 23);
-            textBox_Consultar.TabIndex = 15;
+            textBox_Consultar.TabIndex = 7;
             // 
             // groupBox_Cadastro
             // 
@@ -85,7 +85,7 @@
             numericUpDown_QuantidadeEstoque.Maximum = new decimal(new int[] { 99999, 0, 0, 0 });
             numericUpDown_QuantidadeEstoque.Name = "numericUpDown_QuantidadeEstoque";
             numericUpDown_QuantidadeEstoque.Size = new Size(120, 23);
-            numericUpDown_QuantidadeEstoque.TabIndex = 20;
+            numericUpDown_QuantidadeEstoque.TabIndex = 3;
             // 
             // textBox_Preco
             // 
@@ -93,7 +93,7 @@
             textBox_Preco.Location = new Point(6, 103);
             textBox_Preco.Name = "textBox_Preco";
             textBox_Preco.Size = new Size(233, 23);
-            textBox_Preco.TabIndex = 19;
+            textBox_Preco.TabIndex = 2;
             textBox_Preco.Leave += textBox_Preco_Leave;
             // 
             // label_Nome
@@ -113,7 +113,7 @@
             textBox_Nome.Margin = new Padding(3, 20, 3, 20);
             textBox_Nome.Name = "textBox_Nome";
             textBox_Nome.Size = new Size(233, 23);
-            textBox_Nome.TabIndex = 4;
+            textBox_Nome.TabIndex = 1;
             // 
             // label_Preco
             // 
@@ -151,7 +151,7 @@
             comboBox_Fornecedor.Location = new Point(6, 225);
             comboBox_Fornecedor.Name = "comboBox_Fornecedor";
             comboBox_Fornecedor.Size = new Size(233, 23);
-            comboBox_Fornecedor.TabIndex = 13;
+            comboBox_Fornecedor.TabIndex = 4;
             // 
             // button_LimparCampos
             // 
@@ -160,7 +160,7 @@
             button_LimparCampos.Location = new Point(6, 266);
             button_LimparCampos.Name = "button_LimparCampos";
             button_LimparCampos.Size = new Size(100, 40);
-            button_LimparCampos.TabIndex = 18;
+            button_LimparCampos.TabIndex = 6;
             button_LimparCampos.Text = "Limpar Campos";
             button_LimparCampos.TextAlign = ContentAlignment.MiddleRight;
             button_LimparCampos.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -174,7 +174,7 @@
             button_Cadastrar.Location = new Point(123, 266);
             button_Cadastrar.Name = "button_Cadastrar";
             button_Cadastrar.Size = new Size(116, 40);
-            button_Cadastrar.TabIndex = 17;
+            button_Cadastrar.TabIndex = 5;
             button_Cadastrar.Text = "Cadastrar";
             button_Cadastrar.TextAlign = ContentAlignment.MiddleRight;
             button_Cadastrar.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -188,7 +188,7 @@
             button_Consultar.Location = new Point(821, 41);
             button_Consultar.Name = "button_Consultar";
             button_Consultar.Size = new Size(108, 40);
-            button_Consultar.TabIndex = 19;
+            button_Consultar.TabIndex = 8;
             button_Consultar.Text = "Consultar";
             button_Consultar.TextAlign = ContentAlignment.MiddleRight;
             button_Consultar.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -204,7 +204,7 @@
             dataGridView_Produtos.Name = "dataGridView_Produtos";
             dataGridView_Produtos.RowTemplate.Height = 25;
             dataGridView_Produtos.Size = new Size(917, 666);
-            dataGridView_Produtos.TabIndex = 20;
+            dataGridView_Produtos.TabIndex = 9;
             dataGridView_Produtos.CellClick += dataGridView_Produtos_CellClick;
             dataGridView_Produtos.RowLeave += dataGridView_Produtos_RowLeave;
             // 
