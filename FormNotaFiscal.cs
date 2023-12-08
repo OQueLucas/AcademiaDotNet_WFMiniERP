@@ -107,9 +107,21 @@ namespace AcademiaDotNet_WFMiniERP
                 return;
             }
 
+            if (nota.Status == StatusNota.Cancelada)
+            {
+                MessageBox.Show("Nota já foi cancelada!");
+                return;
+            }
+
+            DialogResult dialog = MessageBox.Show("Tem certeza que deseja excluir a nota?", "nota: " + nota.ID, MessageBoxButtons.YesNo);
+            if (dialog == DialogResult.No) {
+                return;
+            }
+
             nota.Status = StatusNota.Cancelada;
 
             _notaServices.UpdateAsync(nota);
+            MessageBox.Show("Nota cancelada com sucesso!");
         }
 
         private async void button_Filtrar_Click(object sender, EventArgs e)
