@@ -256,7 +256,7 @@
             Controls.Add(dataGridView_Clientes);
             Controls.Add(groupBox_Cadastro);
             Name = "FormCliente";
-            Text = "FormCliente";
+            Text = "Clientes";
             groupBox_Cadastro.ResumeLayout(false);
             groupBox_Cadastro.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView_Clientes).EndInit();

@@ -216,7 +216,7 @@
             Controls.Add(dataGridView_Fornecedores);
             Controls.Add(groupBox_Cadastro);
             Name = "FormFornecedor";
-            Text = "FormFornecedor";
+            Text = "Fornecedores";
             groupBox_Cadastro.ResumeLayout(false);
             groupBox_Cadastro.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView_Fornecedores).EndInit();

@@ -276,7 +276,7 @@
             Controls.Add(button_Consultar);
             Controls.Add(groupBox_Cadastro);
             Name = "FormProduto";
-            Text = "FormProduto";
+            Text = "Produtos";
             groupBox_Cadastro.ResumeLayout(false);
             groupBox_Cadastro.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDown_QuantidadeEstoque).EndInit();

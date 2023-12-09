@@ -275,7 +275,7 @@
             Controls.Add(groupBox_Cadastro);
             Controls.Add(button_Notas);
             Name = "Form1";
-            Text = "Form1";
+            Text = "Mini ERP";
             groupBox_Cadastro.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)numericUpDown_Quantidade).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView_Itens).EndInit();

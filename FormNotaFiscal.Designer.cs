@@ -389,7 +389,7 @@
             Controls.Add(dataGridView_Notas);
             Controls.Add(groupBox_VisualizarNota);
             Name = "FormNotaFiscal";
-            Text = "FormNotaFiscal";
+            Text = "Nota Fiscal";
             ((System.ComponentModel.ISupportInitialize)dataGridView_Notas).EndInit();
             groupBox_VisualizarNota.ResumeLayout(false);
             groupBox_VisualizarNota.PerformLayout();
