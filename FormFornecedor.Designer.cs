@@ -145,6 +145,7 @@
             dataGridView_Fornecedores.Size = new Size(917, 666);
             dataGridView_Fornecedores.TabIndex = 7;
             dataGridView_Fornecedores.CellClick += dataGridView_Fornecedores_CellClick;
+            dataGridView_Fornecedores.RowLeave += dataGridView_Fornecedores_RowLeave;
             // 
             // Column_ID
             // 
@@ -190,6 +191,7 @@
             button_Consultar.TextAlign = ContentAlignment.MiddleRight;
             button_Consultar.TextImageRelation = TextImageRelation.ImageBeforeText;
             button_Consultar.UseVisualStyleBackColor = true;
+            button_Consultar.Click += button_Consultar_Click;
             // 
             // FormFornecedor
             // 

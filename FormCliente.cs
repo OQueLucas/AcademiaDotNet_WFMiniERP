@@ -78,13 +78,14 @@ namespace AcademiaDotNet_WFMiniERP
 
         private async Task BuscaClientes()
         {
+            dataGridView_Clientes.Rows.Clear();
+
             var clientes = await _clienteService.FindAllAsync();
 
             foreach (var cliente in clientes)
             {
                 dataGridView_Clientes.Rows.Add(new string[] { cliente.ID.ToString(), cliente.CPF, cliente.Nome, cliente.Email });
             }
-            //dataGridView_Clientes.DataSource = clientes;
         }
 
         private async Task<bool> Excluir(int id)
@@ -114,13 +115,10 @@ namespace AcademiaDotNet_WFMiniERP
                 return;
             }
 
-
-
             dataGridView_Clientes.Rows.Clear();
 
             string cpf = textBox_Consultar.Text;
             Cliente cliente = await _clienteService.FindByCPFAsync(cpf);
-
 
             if (cliente == null)
             {

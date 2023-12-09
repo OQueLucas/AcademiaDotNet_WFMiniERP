@@ -26,12 +26,11 @@ namespace AcademiaDotNet_WFMiniERP
 
         private void dataGridView_Fornecedores_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            bool excluirClick = e.ColumnIndex == dataGridView_Fornecedores.Rows[e.RowIndex].Cells["Column_Excluir"].ColumnIndex;
-
-            if (!excluirClick) return;
-
-            int id = int.Parse(dataGridView_Fornecedores.Rows[e.RowIndex].Cells["Column_ID"].Value.ToString());
-            Excluir(id);
+            if (e.ColumnIndex == dataGridView_Fornecedores.Columns["Column_Excluir"].Index && e.RowIndex >= 0)
+            {
+                int id = int.Parse(dataGridView_Fornecedores.Rows[e.RowIndex].Cells["Column_ID"].Value.ToString());
+                Excluir(id);
+            }
         }
 
         private void maskedTextBox_CNPJ_Enter(object sender, EventArgs e)
@@ -77,9 +76,14 @@ namespace AcademiaDotNet_WFMiniERP
 
         private async Task BuscaFornecedores()
         {
+            dataGridView_Fornecedores.Rows.Clear();
+
             var fornecedores = await _fornecedorService.FindAllAsync();
-            dataGridView_Fornecedores.AutoGenerateColumns = false;
-            dataGridView_Fornecedores.DataSource = fornecedores;
+
+            foreach (var fornecedor in fornecedores)
+            {
+                dataGridView_Fornecedores.Rows.Add(new string[] { fornecedor.ID.ToString(), fornecedor.CNPJ, fornecedor.RazaoSocial });
+            }
         }
 
         private async Task<bool> Excluir(int id)
@@ -98,6 +102,80 @@ namespace AcademiaDotNet_WFMiniERP
         {
             maskedTextBox_CNPJ.Text = String.Empty;
             textBox_RazaoSocial.Text = String.Empty;
+        }
+
+        private async void button_Consultar_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(textBox_Consultar.Text))
+            {
+                BuscaFornecedores();
+                return;
+            }
+
+            dataGridView_Fornecedores.Rows.Clear();
+
+            string cnpj = textBox_Consultar.Text;
+            Fornecedor fornecedor = await _fornecedorService.FindByCNPJAsync(cnpj);
+
+            if (fornecedor == null)
+            {
+                MessageBox.Show("Nenhum fornecedor encontrado!");
+                return;
+            }
+
+            dataGridView_Fornecedores.Rows.Add(new string[] { fornecedor.ID.ToString(), fornecedor.CNPJ, fornecedor.RazaoSocial });
+        }
+
+        private bool VerificarAlteracao(int linha)
+        {
+            foreach (DataGridViewColumn item in dataGridView_Fornecedores.Columns)
+            {
+                var atual = dataGridView_Fornecedores.Rows[linha].Cells[item.Index].Value;
+                var novo = dataGridView_Fornecedores.Rows[linha].Cells[item.Index].EditedFormattedValue;
+
+                if (atual == null || novo == null)
+                    return false;
+
+                if (!atual.ToString().Equals(novo.ToString()))
+                {
+                    DialogResult result = MessageBox.Show($"Deseja alterar {atual} para {novo}", "Atualização de dados!", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.No)
+                    {
+                        return false;
+                    }
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private async Task Editar()
+        {
+            int linha = dataGridView_Fornecedores.CurrentRow.Index;
+
+            bool linhaAtualizada = VerificarAlteracao(linha);
+
+            Fornecedor fornecedor = new()
+            {
+                ID = int.Parse(dataGridView_Fornecedores.Rows[linha].Cells["Column_ID"].Value.ToString()),
+                CNPJ = dataGridView_Fornecedores.Rows[linha].Cells["Column_CNPJ"].EditedFormattedValue.ToString(),
+                RazaoSocial = dataGridView_Fornecedores.Rows[linha].Cells["Column_RazaoSocial"].EditedFormattedValue.ToString(),
+            };
+
+            if (!linhaAtualizada)
+                return;
+
+            bool atualizado = await _fornecedorService.UpdateAsync(fornecedor);
+
+            if (atualizado)
+            {
+                MessageBox.Show("Cliente atualizado!");
+            }
+        }
+
+        private void dataGridView_Fornecedores_RowLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            Editar();
         }
     }
 }

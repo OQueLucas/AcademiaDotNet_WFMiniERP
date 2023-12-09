@@ -32,6 +32,7 @@ namespace AcademiaDotNet_WFMiniERP.Services
         {
             return await _contexto.Clientes.FindAsync(id);
         }
+
         public async Task<bool> UpdateAsync(Cliente cliente)
         {
             bool existe = await _contexto.Clientes.AnyAsync(x => x.ID == cliente.ID);

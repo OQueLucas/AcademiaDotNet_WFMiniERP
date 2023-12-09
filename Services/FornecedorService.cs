@@ -25,12 +25,39 @@ namespace AcademiaDotNet_WFMiniERP.Services
 
         public async Task<List<Fornecedor>> FindAllAsync()
         {
-            return await _contexto.Fornecedores.ToListAsync();
+            return await _contexto.Fornecedores.AsNoTrackingWithIdentityResolution().ToListAsync();
         }
 
         public async Task<Fornecedor> FindByIDAsync(int id)
         {
             return await _contexto.Fornecedores.FindAsync(id);
+        }
+
+        public async Task<Fornecedor> FindByCNPJAsync(string cnpj)
+        {
+            return await _contexto.Fornecedores.FirstOrDefaultAsync(fornecedor => fornecedor.CNPJ == cnpj);
+        }
+
+        public async Task<bool> UpdateAsync(Fornecedor fornecedor)
+        {
+            bool existe = await _contexto.Fornecedores.AnyAsync(x => x.ID == fornecedor.ID);
+            if (!existe)
+            {
+                MessageBox.Show("Id not found!");
+                return false;
+            }
+
+            try
+            {
+                _contexto.Update(fornecedor);
+                await _contexto.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
         }
 
         public async Task<bool> RemoveAsync(int id)
