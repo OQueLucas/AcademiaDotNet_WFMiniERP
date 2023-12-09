@@ -2,6 +2,12 @@
 
 Aplicação `C# Windows Form` MiniERP avaliativo com cadastro de produtos, clientes e fornecedores, e emissão de notas em PDF.
 
+<img src="https://github.com/OQueLucas/AcademiaDotNet_WFMiniERP/assets/36959868/d14c8fe3-420b-44ca-98a9-8a1492ddd27b" width="300px" />
+<img src="https://github.com/OQueLucas/AcademiaDotNet_WFMiniERP/assets/36959868/252da96b-c1e6-4e2f-94b2-03ef42268da0" width="300px" />
+<img src="https://github.com/OQueLucas/AcademiaDotNet_WFMiniERP/assets/36959868/e94f8468-870a-4dda-a57a-59880ec088cf" width="300px" />
+<img src="https://github.com/OQueLucas/AcademiaDotNet_WFMiniERP/assets/36959868/7e833ebc-165c-4d0e-b3cd-ae676be52113" width="300px" />
+<img src="https://github.com/OQueLucas/AcademiaDotNet_WFMiniERP/assets/36959868/19bda731-d979-47f2-b565-94dee9646392" width="300px" />
+
 ## 📏 Regras de negócio
 
 - As classes DataModels possuem suas relações, conforme os vínculos:
