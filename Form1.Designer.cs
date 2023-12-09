@@ -193,9 +193,9 @@
             label_Produto.AutoSize = true;
             label_Produto.Location = new Point(272, 27);
             label_Produto.Name = "label_Produto";
-            label_Produto.Size = new Size(55, 15);
+            label_Produto.Size = new Size(58, 15);
             label_Produto.TabIndex = 27;
-            label_Produto.Text = "Produtos";
+            label_Produto.Text = "Produtos:";
             // 
             // dataGridView_Itens
             // 

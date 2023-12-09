@@ -42,15 +42,17 @@
             Column_RazaoSocial = new DataGridViewTextBoxColumn();
             Column_Excluir = new DataGridViewButtonColumn();
             button_Consultar = new Button();
+            label_Consulta = new Label();
             groupBox_Cadastro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView_Fornecedores).BeginInit();
             SuspendLayout();
             // 
             // textBox_Consultar
             // 
-            textBox_Consultar.Location = new Point(12, 12);
+            textBox_Consultar.Location = new Point(75, 22);
             textBox_Consultar.Name = "textBox_Consultar";
-            textBox_Consultar.Size = new Size(917, 23);
+            textBox_Consultar.PlaceholderText = "CNPJ";
+            textBox_Consultar.Size = new Size(741, 23);
             textBox_Consultar.TabIndex = 5;
             // 
             // groupBox_Cadastro
@@ -139,10 +141,10 @@
             dataGridView_Fornecedores.BackgroundColor = SystemColors.ControlLight;
             dataGridView_Fornecedores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView_Fornecedores.Columns.AddRange(new DataGridViewColumn[] { Column_ID, Column_CNPJ, Column_RazaoSocial, Column_Excluir });
-            dataGridView_Fornecedores.Location = new Point(12, 83);
+            dataGridView_Fornecedores.Location = new Point(12, 58);
             dataGridView_Fornecedores.Name = "dataGridView_Fornecedores";
             dataGridView_Fornecedores.RowTemplate.Height = 25;
-            dataGridView_Fornecedores.Size = new Size(917, 666);
+            dataGridView_Fornecedores.Size = new Size(917, 691);
             dataGridView_Fornecedores.TabIndex = 7;
             dataGridView_Fornecedores.CellClick += dataGridView_Fornecedores_CellClick;
             dataGridView_Fornecedores.RowLeave += dataGridView_Fornecedores_RowLeave;
@@ -183,7 +185,7 @@
             // 
             button_Consultar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             button_Consultar.Image = Properties.Resources.search_black;
-            button_Consultar.Location = new Point(821, 41);
+            button_Consultar.Location = new Point(822, 12);
             button_Consultar.Name = "button_Consultar";
             button_Consultar.Size = new Size(108, 40);
             button_Consultar.TabIndex = 6;
@@ -193,12 +195,22 @@
             button_Consultar.UseVisualStyleBackColor = true;
             button_Consultar.Click += button_Consultar_Click;
             // 
+            // label_Consulta
+            // 
+            label_Consulta.AutoSize = true;
+            label_Consulta.Location = new Point(12, 25);
+            label_Consulta.Name = "label_Consulta";
+            label_Consulta.Size = new Size(57, 15);
+            label_Consulta.TabIndex = 9;
+            label_Consulta.Text = "Consulta:";
+            // 
             // FormFornecedor
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(1264, 761);
+            Controls.Add(label_Consulta);
             Controls.Add(button_Consultar);
             Controls.Add(textBox_Consultar);
             Controls.Add(dataGridView_Fornecedores);
@@ -227,5 +239,6 @@
         private DataGridViewTextBoxColumn Column_CNPJ;
         private DataGridViewTextBoxColumn Column_RazaoSocial;
         private DataGridViewButtonColumn Column_Excluir;
+        private Label label_Consulta;
     }
 }

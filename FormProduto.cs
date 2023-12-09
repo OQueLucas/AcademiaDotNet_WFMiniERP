@@ -108,39 +108,52 @@ namespace AcademiaDotNet_WFMiniERP
         {
             dataGridView_Produtos.Rows.Clear();
 
-            var produtos = await _produtoService.FindAllAsyncQuery();
-            dataGridView_Produtos.AutoGenerateColumns = false;
+            var produtos = await _produtoService.FindAllAsync();
 
             foreach (Produto produto in produtos)
             {
                 dataGridView_Produtos.Rows.Add(new string[] { produto.ID.ToString(), produto.Nome, produto.Preco.ToString(), produto.Fornecedor.RazaoSocial, produto.Fornecedor.ID.ToString() });
             }
         }
+        private bool VerificarAlteracao(int linha)
+        {
+            foreach (DataGridViewColumn item in dataGridView_Produtos.Columns)
+            {
+                var atual = dataGridView_Produtos.Rows[linha].Cells[item.Index].Value;
+                var novo = dataGridView_Produtos.Rows[linha].Cells[item.Index].EditedFormattedValue;
+
+                if (atual == null || novo == null)
+                    return false;
+
+                if (!atual.ToString().Equals(novo.ToString()))
+                {
+                    DialogResult result = MessageBox.Show($"Deseja alterar {atual} para {novo}", "Atualização de dados!", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.No)
+                    {
+                        return false;
+                    }
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
 
         private async void dataGridView_Produtos_RowLeave(object sender, DataGridViewCellEventArgs e)
         {
             int linha = dataGridView_Produtos.CurrentRow.Index;
-            bool linhaAtualizada = false;
+            bool linhaAtualizada = VerificarAlteracao(linha);
+
+            if (!linhaAtualizada)
+                return;
 
             Produto produtoAtualizado = new()
             {
                 ID = int.Parse(dataGridView_Produtos.Rows[linha].Cells["Column_ID"].Value.ToString()),
                 Nome = dataGridView_Produtos.Rows[linha].Cells["Column_Nome"].EditedFormattedValue.ToString(),
                 Preco = decimal.Parse(dataGridView_Produtos.Rows[linha].Cells["Column_Preco"].EditedFormattedValue.ToString()),
-                FornecedorID = int.Parse(dataGridView_Produtos.Rows[linha].Cells["Column_FornecedorID"].Value.ToString()),
             };
-
-            foreach(DataGridViewColumn item in dataGridView_Produtos.Columns)
-            {
-                if (dataGridView_Produtos.Rows[linha].Cells[item.Index].Value != dataGridView_Produtos.Rows[linha].Cells[item.Index].EditedFormattedValue)
-                {
-                    linhaAtualizada = true;
-                    break;
-                }
-            }
-
-            if (!linhaAtualizada)
-                return;
 
             bool atualizado = await _produtoService.UpdateAsync(produtoAtualizado);
 
@@ -148,6 +161,28 @@ namespace AcademiaDotNet_WFMiniERP
             {
                 MessageBox.Show("Produto atualizado!");
             }
+        }
+
+        private async void button_Consultar_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(textBox_Consultar.Text))
+            {
+                BuscaProdutos();
+                return;
+            }
+
+            dataGridView_Produtos.Rows.Clear();
+
+            int id = int.Parse(textBox_Consultar.Text);
+            Produto produto = await _produtoService.FindByIDAsync(id);
+
+            if (produto == null)
+            {
+                MessageBox.Show("Nenhum produto encontrado!");
+                return;
+            }
+
+            dataGridView_Produtos.Rows.Add(new string[] { produto.ID.ToString(), produto.Nome, produto.Preco.ToString(), produto.Fornecedor.RazaoSocial });
         }
     }
 }

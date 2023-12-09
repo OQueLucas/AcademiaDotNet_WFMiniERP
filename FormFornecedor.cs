@@ -155,6 +155,9 @@ namespace AcademiaDotNet_WFMiniERP
 
             bool linhaAtualizada = VerificarAlteracao(linha);
 
+            if (!linhaAtualizada)
+                return;
+
             Fornecedor fornecedor = new()
             {
                 ID = int.Parse(dataGridView_Fornecedores.Rows[linha].Cells["Column_ID"].Value.ToString()),
@@ -162,14 +165,11 @@ namespace AcademiaDotNet_WFMiniERP
                 RazaoSocial = dataGridView_Fornecedores.Rows[linha].Cells["Column_RazaoSocial"].EditedFormattedValue.ToString(),
             };
 
-            if (!linhaAtualizada)
-                return;
-
             bool atualizado = await _fornecedorService.UpdateAsync(fornecedor);
 
             if (atualizado)
             {
-                MessageBox.Show("Cliente atualizado!");
+                MessageBox.Show("Fornecedor atualizado!");
             }
         }
 

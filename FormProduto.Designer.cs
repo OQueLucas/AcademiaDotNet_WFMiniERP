@@ -48,6 +48,7 @@
             Column_FornecedorRazaoSocial = new DataGridViewTextBoxColumn();
             Column_FornecedorID = new DataGridViewTextBoxColumn();
             Column_Excluir = new DataGridViewButtonColumn();
+            label_Consulta = new Label();
             groupBox_Cadastro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDown_QuantidadeEstoque).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView_Produtos).BeginInit();
@@ -55,9 +56,10 @@
             // 
             // textBox_Consultar
             // 
-            textBox_Consultar.Location = new Point(12, 12);
+            textBox_Consultar.Location = new Point(75, 22);
             textBox_Consultar.Name = "textBox_Consultar";
-            textBox_Consultar.Size = new Size(917, 23);
+            textBox_Consultar.PlaceholderText = "Código do produto";
+            textBox_Consultar.Size = new Size(740, 23);
             textBox_Consultar.TabIndex = 7;
             // 
             // groupBox_Cadastro
@@ -185,7 +187,7 @@
             // 
             button_Consultar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             button_Consultar.Image = Properties.Resources.search_black;
-            button_Consultar.Location = new Point(821, 41);
+            button_Consultar.Location = new Point(821, 12);
             button_Consultar.Name = "button_Consultar";
             button_Consultar.Size = new Size(108, 40);
             button_Consultar.TabIndex = 8;
@@ -193,6 +195,7 @@
             button_Consultar.TextAlign = ContentAlignment.MiddleRight;
             button_Consultar.TextImageRelation = TextImageRelation.ImageBeforeText;
             button_Consultar.UseVisualStyleBackColor = true;
+            button_Consultar.Click += button_Consultar_Click;
             // 
             // dataGridView_Produtos
             // 
@@ -200,10 +203,10 @@
             dataGridView_Produtos.BackgroundColor = SystemColors.ControlLight;
             dataGridView_Produtos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView_Produtos.Columns.AddRange(new DataGridViewColumn[] { Column_ID, Column_Nome, Column_Preco, Column_FornecedorRazaoSocial, Column_FornecedorID, Column_Excluir });
-            dataGridView_Produtos.Location = new Point(12, 87);
+            dataGridView_Produtos.Location = new Point(12, 58);
             dataGridView_Produtos.Name = "dataGridView_Produtos";
             dataGridView_Produtos.RowTemplate.Height = 25;
-            dataGridView_Produtos.Size = new Size(917, 666);
+            dataGridView_Produtos.Size = new Size(917, 695);
             dataGridView_Produtos.TabIndex = 9;
             dataGridView_Produtos.CellClick += dataGridView_Produtos_CellClick;
             dataGridView_Produtos.RowLeave += dataGridView_Produtos_RowLeave;
@@ -213,7 +216,7 @@
             Column_ID.DataPropertyName = "ID";
             Column_ID.HeaderText = "ID";
             Column_ID.Name = "Column_ID";
-            Column_ID.Visible = false;
+            Column_ID.Width = 30;
             // 
             // Column_Nome
             // 
@@ -252,12 +255,22 @@
             Column_Excluir.Text = "Excluir";
             Column_Excluir.UseColumnTextForButtonValue = true;
             // 
+            // label_Consulta
+            // 
+            label_Consulta.AutoSize = true;
+            label_Consulta.Location = new Point(12, 25);
+            label_Consulta.Name = "label_Consulta";
+            label_Consulta.Size = new Size(57, 15);
+            label_Consulta.TabIndex = 15;
+            label_Consulta.Text = "Consulta:";
+            // 
             // FormProduto
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(1264, 761);
+            Controls.Add(label_Consulta);
             Controls.Add(dataGridView_Produtos);
             Controls.Add(textBox_Consultar);
             Controls.Add(button_Consultar);
@@ -290,8 +303,9 @@
         private DataGridViewTextBoxColumn Column_ID;
         private DataGridViewTextBoxColumn Column_Nome;
         private DataGridViewTextBoxColumn Column_Preco;
+        private DataGridViewTextBoxColumn Column_FornecedorRazaoSocial;
         private DataGridViewTextBoxColumn Column_FornecedorID;
         private DataGridViewButtonColumn Column_Excluir;
-        private DataGridViewTextBoxColumn Column_FornecedorRazaoSocial;
+        private Label label_Consulta;
     }
 }
