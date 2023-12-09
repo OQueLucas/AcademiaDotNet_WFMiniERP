@@ -108,7 +108,7 @@ namespace AcademiaDotNet_WFMiniERP
         {
             dataGridView_Produtos.Rows.Clear();
 
-            var produtos = await _produtoService.FindAllAsync();
+            var produtos = await _produtoService.FindAllAsyncQuery();
 
             foreach (Produto produto in produtos)
             {
@@ -153,6 +153,7 @@ namespace AcademiaDotNet_WFMiniERP
                 ID = int.Parse(dataGridView_Produtos.Rows[linha].Cells["Column_ID"].Value.ToString()),
                 Nome = dataGridView_Produtos.Rows[linha].Cells["Column_Nome"].EditedFormattedValue.ToString(),
                 Preco = decimal.Parse(dataGridView_Produtos.Rows[linha].Cells["Column_Preco"].EditedFormattedValue.ToString()),
+                FornecedorID = int.Parse(dataGridView_Produtos.Rows[linha].Cells["Column_FornecedorID"].Value.ToString()),
             };
 
             bool atualizado = await _produtoService.UpdateAsync(produtoAtualizado);

@@ -38,7 +38,7 @@ namespace AcademiaDotNet_WFMiniERP.Services
                     Nome = x.produto.Nome,
                     Preco = x.produto.Preco,
                     Fornecedor = x.fornecedor
-                }).ToListAsync();
+                }).AsNoTracking().ToListAsync();
             return query;
         }
 
