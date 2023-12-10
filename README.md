@@ -2,11 +2,13 @@
 
 Aplicação `C# Windows Form` MiniERP avaliativo com cadastro de produtos, clientes e fornecedores, e emissão de notas em PDF.
 
-<img src="https://github.com/OQueLucas/AcademiaDotNet_WFMiniERP/assets/36959868/d14c8fe3-420b-44ca-98a9-8a1492ddd27b" width="300px" />
-<img src="https://github.com/OQueLucas/AcademiaDotNet_WFMiniERP/assets/36959868/252da96b-c1e6-4e2f-94b2-03ef42268da0" width="300px" />
-<img src="https://github.com/OQueLucas/AcademiaDotNet_WFMiniERP/assets/36959868/e94f8468-870a-4dda-a57a-59880ec088cf" width="300px" />
-<img src="https://github.com/OQueLucas/AcademiaDotNet_WFMiniERP/assets/36959868/7e833ebc-165c-4d0e-b3cd-ae676be52113" width="300px" />
-<img src="https://github.com/OQueLucas/AcademiaDotNet_WFMiniERP/assets/36959868/19bda731-d979-47f2-b565-94dee9646392" width="300px" />
+<img src="https://github.com/OQueLucas/AcademiaDotNet_WFMiniERP/assets/36959868/d14c8fe3-420b-44ca-98a9-8a1492ddd27b" title="Tela inicial" alt="Tela incial de emissão de nota" width="300px" />
+<img src="https://github.com/OQueLucas/AcademiaDotNet_WFMiniERP/assets/36959868/252da96b-c1e6-4e2f-94b2-03ef42268da0" title="Tela de clientes" alt="Tela gerenciamento de clientes" width="300px" />
+<img src="https://github.com/OQueLucas/AcademiaDotNet_WFMiniERP/assets/36959868/e94f8468-870a-4dda-a57a-59880ec088cf" title="Tela de produtos" alt="Tela gerenciamento de produtos" width="300px" />
+<img src="https://github.com/OQueLucas/AcademiaDotNet_WFMiniERP/assets/36959868/7e833ebc-165c-4d0e-b3cd-ae676be52113" title="Tela de fornecedores" alt="Tela gerenciamento de fornecedores" width="300px" />
+<img src="https://github.com/OQueLucas/AcademiaDotNet_WFMiniERP/assets/36959868/19bda731-d979-47f2-b565-94dee9646392" title="Tela de visualizar nota" alt="Tela visualização e cancelamento de nota" width="300px" />
+<img src="https://github.com/OQueLucas/AcademiaDotNet_WFMiniERP/assets/36959868/b54461fd-e726-4e37-90b4-e48f14c30875" title="Tela de visualizar nota e nota selecionada" alt="Tela visualização e cancelamento de nota com nota selecionada" width="300px" />
+<img src="https://github.com/OQueLucas/AcademiaDotNet_WFMiniERP/assets/36959868/55a579a8-915a-495e-9e3d-97623212be27" title="PDF gerado" alt="PDF emitido referente a nota" width="300px" />
 
 ## 📏 Regras de negócio
 
