@@ -54,7 +54,7 @@ Aplicação `C# Windows Form` MiniERP avaliativo com cadastro de produtos, clien
 - `.NET 6`
 - `C#`
 - `Entity Framework`
-- `MySQL`
+- `SQL Server`
 - `Migration`
 - `iText7`
   - Para a criação de PDF;
